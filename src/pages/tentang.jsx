@@ -1,34 +1,11 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import patternBottom from "../assets/patternBottom.png";
 import patternTop from "../assets/patternTop.png";
+// import img from '../assets/about.png';
 import dot from "../assets/dot.svg";
+import images from "../assets/pengurus-new/index";
 import "../styles/about.css";
-
-import aca1 from "../assets/pengurus-new/aca1.webp";
-import acep1 from "../assets/pengurus-new/acep1.webp";
-import AH1 from "../assets/pengurus-new/AH1.webp";
-import AK1 from "../assets/pengurus-new/AK1.webp";
-import alpa1 from "../assets/pengurus-new/alpa1.webp";
-import ari1 from "../assets/pengurus-new/ari1.webp";
-import CEA1 from "../assets/pengurus-new/CEA1.webp";
-import dali1 from "../assets/pengurus-new/dali1.webp";
-import DANI1 from "../assets/pengurus-new/DANI1.webp";
-import DEL1 from "../assets/pengurus-new/DEL1.webp";
-import DND1 from "../assets/pengurus-new/DND1.webp";
-import IC1 from "../assets/pengurus-new/IC1.webp";
-import IP1 from "../assets/pengurus-new/IP1.webp";
-import lngas1 from "../assets/pengurus-new/lngas1.webp";
-import MJ1 from "../assets/pengurus-new/MJ1.webp";
-import NH1 from "../assets/pengurus-new/NH1.webp";
-import nrcs1 from "../assets/pengurus-new/nrcs1.webp";
-import obi1 from "../assets/pengurus-new/obi1.webp";
-import puput1 from "../assets/pengurus-new/puput1.webp";
-import pute1 from "../assets/pengurus-new/pute1.webp";
-import RR1 from "../assets/pengurus-new/RR1.webp";
-import samil1 from "../assets/pengurus-new/samil1.webp";
-import SN1 from "../assets/pengurus-new/SN1.webp";
-import UCI1 from "../assets/pengurus-new/UCI1.webp";
-import yoland1 from "../assets/pengurus-new/yoland1.webp";
+// import Profile from '../components/profile';
 
 // import aca from '../assets/pengurus/aca.webp';
 // import aidil from '../assets/pengurus/aidil.webp';
@@ -341,7 +318,7 @@ const Tentang = () => {
                         <Box
                           loading="lazy"
                           component="img"
-                          src={nrcs1}
+                          src={images.nrcs1}
                           width="175px"
                         />
                       </Box>
@@ -375,7 +352,7 @@ const Tentang = () => {
                         <Box
                           loading="lazy"
                           component="img"
-                          src={DANI1}
+                          src={images.DANI1}
                           width="175px"
                         />
                       </Box>
@@ -409,7 +386,7 @@ const Tentang = () => {
                         <Box
                           loading="lazy"
                           component="img"
-                          src={aca1}
+                          src={images.aca1}
                           width="175px"
                         />
                       </Box>
@@ -443,7 +420,7 @@ const Tentang = () => {
                         <Box
                           loading="lazy"
                           component="img"
-                          src={pute1}
+                          src={images.pute1}
                           width="175px"
                         />
                       </Box>
@@ -477,7 +454,7 @@ const Tentang = () => {
                         <Box
                           loading="lazy"
                           component="img"
-                          src={RR1}
+                          src={images.RR1}
                           width="175px"
                         />
                       </Box>
@@ -529,7 +506,7 @@ const Tentang = () => {
                       <Box
                         loading="lazy"
                         component="img"
-                        src={acep1}
+                        src={images.acep1}
                         width="175px"
                       />
                     </Box>
@@ -605,7 +582,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={dali1}
+                              src={images.dali1}
                               width="175px"
                             />
                           </Box>
@@ -639,7 +616,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={AK1}
+                              src={images.AK1}
                               width="175px"
                             />
                           </Box>
@@ -673,7 +650,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={UCI1}
+                              src={images.UCI1}
                               width="175px"
                             />
                           </Box>
@@ -732,7 +709,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={ari1}
+                              src={images.ari1}
                               width="175px"
                             />
                           </Box>
@@ -766,7 +743,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={lngas1}
+                              src={images.lngas1}
                               width="175px"
                             />
                           </Box>
@@ -800,7 +777,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={CEA1}
+                              src={images.CEA1}
                               width="175px"
                             />
                           </Box>
@@ -834,7 +811,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={obi1}
+                              src={images.obi1}
                               width="175px"
                             />
                           </Box>
@@ -902,7 +879,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={IP1}
+                              src={images.IP1}
                               width="175px"
                             />
                           </Box>
@@ -936,7 +913,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={samil1}
+                              src={images.samil1}
                               width="175px"
                             />
                           </Box>
@@ -970,7 +947,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={MJ1}
+                              src={images.MJ1}
                               width="175px"
                             />
                           </Box>
@@ -1018,7 +995,7 @@ const Tentang = () => {
                       <Box
                         loading="lazy"
                         component="img"
-                        src={NH1}
+                        src={images.NH1}
                         width="175px"
                       />
                     </Box>
@@ -1096,7 +1073,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={yoland1}
+                              src={images.yoland1}
                               width="175px"
                             />
                           </Box>
@@ -1130,7 +1107,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={puput1}
+                              src={images.puput1}
                               width="175px"
                             />
                           </Box>
@@ -1185,7 +1162,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={IC1}
+                              src={images.IC1}
                               width="175px"
                             />
                           </Box>
@@ -1219,7 +1196,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={alpa1}
+                              src={images.alpa1}
                               width="175px"
                             />
                           </Box>
@@ -1253,7 +1230,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={DEL1}
+                              src={images.DEL1}
                               width="175px"
                             />
                           </Box>
@@ -1314,7 +1291,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={AH1}
+                              src={images.AH1}
                               width="175px"
                             />
                           </Box>
@@ -1348,7 +1325,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={DND1}
+                              src={images.DND1}
                               width="175px"
                             />
                           </Box>
@@ -1382,7 +1359,7 @@ const Tentang = () => {
                             <Box
                               loading="lazy"
                               component="img"
-                              src={SN1}
+                              src={images.SN1}
                               width="175px"
                             />
                           </Box>
