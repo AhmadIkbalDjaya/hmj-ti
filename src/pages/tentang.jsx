@@ -342,7 +342,7 @@ const Tentang = () => {
                                                 <Box
                                                     loading="lazy"
                                                     component="img"
-                                                    src={images.nrcs1}
+                                                    src={images.aca1}
                                                     width="175px"
                                                 />
                                             </Box>
@@ -353,18 +353,19 @@ const Tentang = () => {
                                                     pt={2}
                                                     fontWeight={500}
                                                 >
-                                                    Shafwan Zuhdy
+                                                    Aqilah Zahra
                                                 </Typography>
                                                 <Typography
                                                     color="primary.main"
                                                     fontSize="0.7rem"
                                                     fontWeight={700}
                                                 >
-                                                    Wakil Sekretaris Umum
+                                                    Ketua Umum
                                                 </Typography>
                                             </Box>
                                         </Box>
                                     </Grid>
+
                                     <Grid item md={3} xs={12} ml={3}>
                                         <Box
                                             display="flex"
@@ -410,7 +411,7 @@ const Tentang = () => {
                                                 <Box
                                                     loading="lazy"
                                                     component="img"
-                                                    src={images.aca1}
+                                                    src={images.nrcs1}
                                                     width="175px"
                                                 />
                                             </Box>
@@ -421,14 +422,14 @@ const Tentang = () => {
                                                     pt={2}
                                                     fontWeight={500}
                                                 >
-                                                    Aqilah Zahra
+                                                    Shafwan Zuhdy
                                                 </Typography>
                                                 <Typography
                                                     color="primary.main"
                                                     fontSize="0.7rem"
                                                     fontWeight={700}
                                                 >
-                                                    Ketua Umum
+                                                    Wakil Sekretaris Umum
                                                 </Typography>
                                             </Box>
                                         </Box>
