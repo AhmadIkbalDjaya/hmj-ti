@@ -127,7 +127,7 @@ const Footer = () => {
                                 Telepon
                             </Typography>
                             <a
-                                href={`https://wa.me/082197315771`}
+                                href={`https://wa.me/6282197315771`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{

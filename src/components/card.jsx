@@ -148,7 +148,7 @@ export const ProductCard = ({ data }) => {
                         gap={1}
                     >
                         <a
-                            href={`https://wa.me/${data.contact}`}
+                            href={`https://wa.me/62${data.contact.slice(1)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{
