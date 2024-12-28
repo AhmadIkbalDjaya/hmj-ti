@@ -32,18 +32,6 @@ const Footer = () => {
                 width={{ xs: "30%", sm: "20%", md: "10%" }}
                 my={2}
             />
-            <Typography
-                sx={{
-                    fontSize: "12px",
-                    textAlign: "center",
-                    color: "grey",
-                }}
-                width={{ xs: "80%", md: "50%" }}
-            >
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Veritatis nesciunt molestias fugit odio doloremque, distinctio
-                fuga esse sunt commodi amet.
-            </Typography>
             <Stack
                 direction="row"
                 gap={3}
@@ -138,13 +126,22 @@ const Footer = () => {
                             >
                                 Telepon
                             </Typography>
-                            <Typography
-                                fontWeight={700}
-                                color="primary.main"
-                                fontSize={14}
+                            <a
+                                href={`https://wa.me/082197315771`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    textDecoration: "none",
+                                }}
                             >
-                                +62 852 5546 5990
-                            </Typography>
+                                <Typography
+                                    fontWeight={700}
+                                    color="primary.main"
+                                    fontSize={14}
+                                >
+                                    +62 821 9731 5771
+                                </Typography>
+                            </a>
                         </Box>
                     </Stack>
                     <Stack direction="row" gap={2} justifyContent="left">
@@ -162,13 +159,22 @@ const Footer = () => {
                             >
                                 Email
                             </Typography>
-                            <Typography
-                                fontWeight={700}
-                                color="primary.main"
-                                fontSize={14}
+                            <a
+                                href="mailto:hmj.ti@uin-alauddin.ac.id"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{
+                                    textDecoration: "none",
+                                }}
                             >
-                                hmj.ti@uin-alauddin.ac.id
-                            </Typography>
+                                <Typography
+                                    fontWeight={700}
+                                    color="primary.main"
+                                    fontSize={14}
+                                >
+                                    hmj.ti@uin-alauddin.ac.id
+                                </Typography>
+                            </a>
                         </Box>
                     </Stack>
                     <Stack direction="row" gap={2} justifyContent="left">

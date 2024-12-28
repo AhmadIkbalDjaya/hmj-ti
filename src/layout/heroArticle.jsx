@@ -1,6 +1,7 @@
-import { Typography, Box, Grid, Container } from '@mui/material';
+import { Typography, Box, Grid, Container } from "@mui/material";
 // import { useEffect, useState } from 'react';
-import Cards from '../components/card';
+import Cards from "../components/card";
+import { articles } from "../constants";
 
 const HeroArticle = () => {
     // const [articles, setArticles] = useState([]);
@@ -21,53 +22,46 @@ const HeroArticle = () => {
 
     return (
         <Box
-            textAlign='center'
+            textAlign="center"
             pb={13}
-            display='flex'
-            flexDirection='column'
-            alignItems='center'
-            bgcolor='#F9FAFB'
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            bgcolor="#F9FAFB"
         >
-            <Container maxWidth='lg'>
+            <Container maxWidth="lg">
                 <Typography
                     fontWeight={700}
                     fontSize={30}
-                    color='primary.main'
-                    className='heading'
+                    color="primary.main"
+                    className="heading"
                 >
                     Berita & Informasi
                 </Typography>
-                <Grid container py={5} px={{ xs: 2, sm: 10, md: 14, lg: 18 }} rowSpacing={4} columnSpacing={4} >
-                    {/* {articles?.map(items => {
-                        return (
-                            <Grid
-                                item
-                                xs={12}
-                                sm={6}
-                                md={4}
-                                display='flex'
-                                justifyContent='center'
-                                key={items.id}
-                            >
-                                <Cards.ArticleCard data={items} />
-                            </Grid>
-                        )
-                    })} */}
-                    <Grid
-                        item
-                        xs={12}
-                        sm={6}
-                        md={4}
-                        display='flex'
-                        justifyContent='center'
-                    // key={items.id}
-                    >
-                        <Cards.ArticleCard />
-                    </Grid>
+                <Grid
+                    container
+                    py={5}
+                    px={{ xs: 2, sm: 10, md: 14, lg: 18 }}
+                    rowSpacing={4}
+                    columnSpacing={4}
+                >
+                    {articles?.map((items) => (
+                        <Grid
+                            item
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            display="flex"
+                            justifyContent="center"
+                            key={items.id}
+                        >
+                            <Cards.ArticleCard data={items} />
+                        </Grid>
+                    ))}
                 </Grid>
-            </Container >
+            </Container>
         </Box>
     );
-}
+};
 
 export default HeroArticle;

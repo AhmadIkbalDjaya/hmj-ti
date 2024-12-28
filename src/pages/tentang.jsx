@@ -222,11 +222,10 @@ const Tentang = () => {
                                     Informatika
                                 </Typography>
                                 <Typography sx={style.description}>
-                                    Menjadikan wadah pengembangan teknologi
-                                    informasi yang unggul, melahirkan kader yang
-                                    berkepribadian muslim, berakhlakul qarimah,
-                                    cerdas, kompetitif dan professional yang
-                                    dijiwai Al-Qur’an dan Al-Hadist
+                                    Menciptakan lingkungan organisasi
+                                    profesional dan berkualitas serta memiliki
+                                    tingkat kedisiplinan yang tinggi setiap
+                                    anggota
                                 </Typography>
                             </Grid>
                             <Grid

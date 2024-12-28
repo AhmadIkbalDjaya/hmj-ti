@@ -1,8 +1,12 @@
 // import { useEffect, useState } from "react";
-import { Box, Typography, Grid } from '@mui/material';
-import Cards from '../components/card';
-import patternTop from '../assets/patternTop.png';
-import patternBottom from '../assets/patternBottom.png';
+import { Box, Typography, Grid } from "@mui/material";
+import Cards from "../components/card";
+import patternTop from "../assets/patternTop.png";
+import patternBottom from "../assets/patternBottom.png";
+import detailPic from "../assets/article/article.webp";
+import advokasiPic from "../assets/article/advokasi.webp";
+import dekadePic from "../assets/article/2dekade.webp";
+import { articles } from "../constants";
 
 const Berita = () => {
     // const [articles, setArticles] = useState([]);
@@ -24,72 +28,67 @@ const Berita = () => {
     return (
         <>
             <Box
-                bgcolor='primary.main'
+                bgcolor="primary.main"
                 height={375}
-                width='100%'
-                display='flex'
-                justifyContent='center'
-                alignItems='center'
-                textAlign='center'
-                position='relative'
+                width="100%"
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                textAlign="center"
+                position="relative"
             >
                 <Box
-                    component='img'
+                    component="img"
                     src={patternTop}
-                    position='absolute'
+                    position="absolute"
                     left={{ xs: -200, md: -100 }}
                     top={0}
-                    height='100%'
+                    height="100%"
                 />
                 <Box
-                    component='img'
+                    component="img"
                     src={patternBottom}
-                    position='absolute'
+                    position="absolute"
                     right={{ xs: -200, md: -100 }}
                     bottom={0}
-                    height='100%'
+                    height="100%"
                 />
                 <Typography
-                    position='absolute'
-                    color='#fff'
+                    position="absolute"
+                    color="#fff"
                     fontWeight={600}
-                    fontSize={{ xs: '2rem', md: '3rem' }}
+                    fontSize={{ xs: "2rem", md: "3rem" }}
                 >
                     Berita & Kegiatan
                 </Typography>
             </Box>
-            <Box bgcolor='#F9FAFB'>
+            <Box bgcolor="#F9FAFB">
                 <Grid
-                    height='fit-content'
+                    height="fit-content"
                     container
                     py={9}
                     px={12}
-                    alignItems='center'
+                    alignItems="center"
                     spacing={3}
-                    justifyContent='center'
+                    justifyContent="center"
                 >
-                    {/* {articles?.map(items => {
-                        return (
-                            <Grid
-                                item
-                                // xs={16}
-                                // sm={6}
-                                // md={4}
-                                // display='flex'
-                                // justifyContent='center'
-                                key={items.id}
-                            >
-                                <Cards.ArticleCard data={items} />
-                            </Grid>
-                        )
-                    })} */}
-                    <Grid item>
-                        <Cards.ArticleCard />
-                    </Grid>
+                    {articles?.map((items) => (
+                        <Grid
+                            item
+                            // xs={16}
+                            // sm={6}
+                            // md={4}
+                            // display='flex'
+                            // justifyContent='center'
+                            key={items.id}
+                        >
+                            <Cards.ArticleCard data={items} />
+                        </Grid>
+                    ))}
                 </Grid>
             </Box>
         </>
     );
-}
+};
 
 export default Berita;
