@@ -2,8 +2,6 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "../styles/heroProduct.css";
 import arrow from "../assets/arrow.svg";
-import produk1 from "../assets/produk/produk1.webp";
-import produk2 from "../assets/produk/produk2.webp";
 import { products } from "../constants";
 // import { useEffect, useState } from 'react';
 

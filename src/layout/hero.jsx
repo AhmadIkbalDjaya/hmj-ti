@@ -7,23 +7,7 @@ import "./hero.css";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, Parallax } from "swiper";
 import { useState } from "react";
-import detailPic from "../assets/article/article.webp";
 import { articles } from "../constants";
-
-const data = [
-    {
-        id: 1,
-        title: "Dirgahayu Jurusan Teknik Informatika ke 19th",
-        description:
-            "Perayaan Milad Jurusan Teknik Informatika merupakan saat yang tepat untuk mengenang awal mula pendirian jurusan ini dan bagaimana sejak saat itu telah berkembang menjadi salah satu jurusan terkemuka dalam bidang teknologi informasi.",
-    },
-    {
-        id: 1,
-        title: "Dirgahayu Jurusan Teknik Informatika ke 19th",
-        description:
-            "Perayaan Milad Jurusan Teknik Informatika merupakan saat yang tepat untuk mengenang awal mula pendirian jurusan ini dan bagaimana sejak saat itu telah berkembang menjadi salah satu jurusan terkemuka dalam bidang teknologi informasi.",
-    },
-];
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);

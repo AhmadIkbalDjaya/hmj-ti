@@ -3,9 +3,6 @@ import { Box, Typography, Grid } from "@mui/material";
 import Cards from "../components/card";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
-import detailPic from "../assets/article/article.webp";
-import advokasiPic from "../assets/article/advokasi.webp";
-import dekadePic from "../assets/article/2dekade.webp";
 import { articles } from "../constants";
 
 const Berita = () => {
