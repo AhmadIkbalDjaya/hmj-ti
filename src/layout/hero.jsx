@@ -7,7 +7,6 @@ import "./hero.css";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, Parallax } from "swiper";
 import { useEffect, useState } from "react";
-import { articles } from "../constants";
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);

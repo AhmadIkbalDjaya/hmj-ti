@@ -1,13 +1,8 @@
-import { Box, Grid, Skeleton, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import patternBottom from "../assets/patternBottom.png";
 import patternTop from "../assets/patternTop.png";
-// import img from '../assets/about.png';
 import dot from "../assets/dot.svg";
-import images from "../assets/pengurus-new/index";
 import "../styles/about.css";
-// import Profile from '../components/profile';
-
-import { useEffect, useState } from "react";
 import VisiMisi from "../components/tentang/visi-misi";
 import Pengurus from "../components/tentang/pengurus";
 

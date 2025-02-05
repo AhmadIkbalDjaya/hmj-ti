@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Grid, Pagination, Skeleton } from "@mui/material";
+import { Box, Typography, Grid, Pagination } from "@mui/material";
 import Cards from "../components/card";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";

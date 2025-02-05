@@ -2,7 +2,6 @@ import { Box, Grid, Stack, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import "../styles/heroProduct.css";
 import arrow from "../assets/arrow.svg";
-import { products } from "../constants";
 import { useEffect, useState } from "react";
 
 const HeroProduct = () => {
@@ -109,42 +108,43 @@ const HeroProduct = () => {
                             position="relative"
                             zIndex={2}
                         >
-                            {productHighlight?.data?.map((product) => (
-                                <Grid
-                                    borderRadius={1}
-                                    item
-                                    xs={12}
-                                    md={6}
-                                    display="flex"
-                                    justifyContent={{
-                                        xs: "center",
-                                        md: "start",
-                                    }}
-                                    alignItems="center"
-                                >
-                                    <Box
-                                        className="product"
+                            {!loading &&
+                                productHighlight?.data?.map((product) => (
+                                    <Grid
                                         borderRadius={1}
-                                        mb={8}
-                                        bgcolor="#fff"
-                                        width="95%"
-                                        height="95%"
+                                        item
+                                        xs={12}
+                                        md={6}
                                         display="flex"
-                                        justifyContent="center"
+                                        justifyContent={{
+                                            xs: "center",
+                                            md: "start",
+                                        }}
                                         alignItems="center"
-                                        sx={{ objectFit: "contain" }}
                                     >
                                         <Box
                                             className="product"
-                                            width="85%"
-                                            height="85%"
-                                            component="img"
-                                            sx={{ aspectRatio: 1 / 1 }}
-                                            src={product.image}
-                                        ></Box>
-                                    </Box>
-                                </Grid>
-                            ))}
+                                            borderRadius={1}
+                                            mb={8}
+                                            bgcolor="#fff"
+                                            width="95%"
+                                            height="95%"
+                                            display="flex"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            sx={{ objectFit: "contain" }}
+                                        >
+                                            <Box
+                                                className="product"
+                                                width="85%"
+                                                height="85%"
+                                                component="img"
+                                                sx={{ aspectRatio: 1 / 1 }}
+                                                src={product.image}
+                                            ></Box>
+                                        </Box>
+                                    </Grid>
+                                ))}
                         </Grid>
                     </Box>
                     <NavLink to="/ekonomi-kreatif" className="link-mobile">
