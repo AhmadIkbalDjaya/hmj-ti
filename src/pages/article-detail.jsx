@@ -23,7 +23,7 @@ const ArticleDetail = () => {
 
     useEffect(() => {
         getArticle();
-    }, []);
+    }, [getArticle]);
 
     return (
         <Box

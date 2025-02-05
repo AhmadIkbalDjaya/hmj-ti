@@ -3,7 +3,6 @@ import { Box, Typography, Grid, Pagination } from "@mui/material";
 import Cards from "../components/card";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
-// import { articles } from "../constants";
 
 const Berita = () => {
     const [articles, setArticles] = useState([]);
@@ -26,7 +25,7 @@ const Berita = () => {
 
     useEffect(() => {
         getArticles();
-    }, [page]);
+    }, [page, getArticles]);
 
     const handlePagination = (_data, value) => {
         setPage(value);
