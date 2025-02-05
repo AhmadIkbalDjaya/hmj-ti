@@ -2,16 +2,78 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Box, CardMedia, Stack } from "@mui/material";
+import { Box, CardMedia, Skeleton, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import imageBorder from "../assets/ekrefCard.png";
-
 import whatsappLogo from "../assets/products/whatsapp.svg";
 import instagramLogo from "../assets/products/instagram.svg";
-import { formatDate } from "../utils/formatDate";
-import { formatPhoneNumber } from "../utils/formatPhone";
 
-const ArticleCard = ({ data }) => {
+const ArticleCard = ({ data, loading }) => {
+    if (loading) {
+        return (
+            <Card
+                sx={{
+                    height: "300px",
+                    position: "relative",
+                    width: "250px",
+                    boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.12)",
+                }}
+            >
+                {/* Image Skeleton */}
+                <Skeleton
+                    variant="rectangular"
+                    height="44%"
+                    sx={{ width: "90%", mx: "auto", mt: "20px" }}
+                    animation="wave"
+                />
+
+                {/* Title Skeleton */}
+                <CardContent sx={{ paddingTop: 0 }}>
+                    <Skeleton
+                        variant="text"
+                        width="80%"
+                        height={28}
+                        sx={{ mx: "auto", mt: 2 }}
+                        animation="wave"
+                    />
+
+                    {/* Content Skeleton */}
+                    <Skeleton
+                        variant="text"
+                        width="90%"
+                        height={15}
+                        sx={{ mx: "auto", mt: 1 }}
+                        animation="wave"
+                    />
+                    <Skeleton
+                        variant="text"
+                        width="85%"
+                        height={15}
+                        sx={{ mx: "auto", mt: 1 }}
+                        animation="wave"
+                    />
+                    <Skeleton
+                        variant="text"
+                        width="70%"
+                        height={15}
+                        sx={{ mx: "auto", mt: 1 }}
+                        animation="wave"
+                    />
+                </CardContent>
+
+                {/* Action Skeleton */}
+                <CardActions>
+                    <Skeleton
+                        variant="text"
+                        width="60%"
+                        height={20}
+                        sx={{ mx: "auto", mt: 2 }}
+                        animation="wave"
+                    />
+                </CardActions>
+            </Card>
+        );
+    }
     return (
         <Card
             sx={{
@@ -55,11 +117,11 @@ const ArticleCard = ({ data }) => {
                         overflow: "hidden",
                     }}
                 >
-                    {data.description}
+                    {data.content}
                 </Typography>
             </CardContent>
             <CardActions>
-                <NavLink to={`/berita-dan-kegiatan/${data.id}`}>
+                <NavLink to={`/berita-dan-kegiatan/${data.slug}`}>
                     <Typography
                         color="primary.main"
                         fontSize={11}
@@ -78,8 +140,7 @@ const ArticleCard = ({ data }) => {
     );
 };
 
-export const ProductCard = ({ data }) => {
-    const formattedDate = formatDate(data.created_at);
+export const ProductCard = ({ data, loading }) => {
     return (
         <Card
             sx={{
@@ -90,30 +151,37 @@ export const ProductCard = ({ data }) => {
                 maxHeight: "500px",
                 width: { xs: "auto", sm: "580px" },
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "space-between",
                 px: 2,
                 py: 2,
                 flexDirection: { xs: "column", sm: "row" },
             }}
         >
-            <Box height={{ xs: "40%", sm: "90%", md: "90%" }} width="100%">
-                <CardMedia
-                    loading="lazy"
-                    component="img"
-                    height="100%"
-                    width="100%"
-                    src={data.image}
-                    sx={{ objectFit: "contain" }}
-                />
+            <Box
+                height={loading ? "100%" : { xs: "40%", sm: "90%", md: "90%" }}
+                width={loading ? "40%" : "100%"}
+            >
+                {loading ? (
+                    <Skeleton height="100%" variant="rectangular" />
+                ) : (
+                    <CardMedia
+                        loading="lazy"
+                        component="img"
+                        height="100%"
+                        width="100%"
+                        src={data?.image}
+                        sx={{ objectFit: "contain" }}
+                    />
+                )}
             </Box>
-            <CardContent>
+            <CardContent sx={loading && { width: "60%" }}>
                 <Typography
                     fontWeight={600}
                     fontSize={13}
                     color="#ACACAC"
                     letterSpacing={1.5}
                 >
-                    {formattedDate}
+                    {loading ? <Skeleton /> : data.publication_date}
                 </Typography>
                 <Typography
                     textAlign="left"
@@ -122,7 +190,7 @@ export const ProductCard = ({ data }) => {
                     fontSize="1.2rem"
                     pt={1}
                 >
-                    {data.name}
+                    {loading ? <Skeleton /> : data.name}
                 </Typography>
                 <Typography
                     variant="body2"
@@ -132,7 +200,14 @@ export const ProductCard = ({ data }) => {
                     py={1}
                     width="85%"
                 >
-                    {data.description}
+                    {loading ? (
+                        <>
+                            <Skeleton />
+                            <Skeleton />
+                        </>
+                    ) : (
+                        data.description
+                    )}
                 </Typography>
                 <Stack
                     flexDirection={{ xs: "column", md: "row" }}
@@ -141,67 +216,79 @@ export const ProductCard = ({ data }) => {
                     justifyContent="start"
                     alignItems="start"
                 >
-                    <Stack
-                        flexDirection="row"
-                        justifyContent="center"
-                        alignItems="center"
-                        gap={1}
-                    >
-                        <a
-                            href={`https://wa.me/62${data.contact.slice(1)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                                textDecoration: "none",
-                                display: "flex",
-                                gap: 8,
-                            }}
-                        >
-                            <Box
-                                loading="lazy"
-                                component="img"
-                                src={whatsappLogo}
-                                width={18}
-                            />
-                            <Typography
-                                fontSize={{ xs: "0.7rem", md: "0.9rem" }}
-                                fontWeight={500}
-                                color="text.secondary"
+                    {loading ? (
+                        <Skeleton width="50%" />
+                    ) : (
+                        <>
+                            <Stack
+                                flexDirection="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                gap={1}
                             >
-                                {formatPhoneNumber(data.contact)}
-                            </Typography>
-                        </a>
-                    </Stack>
-                    <Stack
-                        flexDirection="row"
-                        justifyContent="center"
-                        alignItems="center"
-                        gap={1}
-                    >
-                        <a
-                            href="https://www.instagram.com/hmjti_uinam/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{
-                                textDecoration: "none",
-                                display: "flex",
-                                gap: 8,
-                            }}
-                        >
-                            <Box
-                                component="img"
-                                src={instagramLogo}
-                                width={18}
-                            />
-                            <Typography
-                                fontSize={{ xs: "0.7rem", md: "0.9rem" }}
-                                fontWeight={500}
-                                color="text.secondary"
+                                <a
+                                    href={`https://wa.me/62${data?.no_wa.slice(1).replace(/-/g, "")}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        textDecoration: "none",
+                                        display: "flex",
+                                        gap: 8,
+                                    }}
+                                >
+                                    <Box
+                                        loading="lazy"
+                                        component="img"
+                                        src={whatsappLogo}
+                                        width={18}
+                                    />
+                                    <Typography
+                                        fontSize={{
+                                            xs: "0.7rem",
+                                            md: "0.9rem",
+                                        }}
+                                        fontWeight={500}
+                                        color="text.secondary"
+                                    >
+                                        {data?.no_wa}
+                                    </Typography>
+                                </a>
+                            </Stack>
+                            <Stack
+                                flexDirection="row"
+                                justifyContent="center"
+                                alignItems="center"
+                                gap={1}
                             >
-                                @hmjti_uinam
-                            </Typography>
-                        </a>
-                    </Stack>
+                                <a
+                                    href="https://www.instagram.com/hmjti_uinam/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        textDecoration: "none",
+                                        display: "flex",
+                                        gap: 8,
+                                    }}
+                                >
+                                    <Box
+                                        component="img"
+                                        src={instagramLogo}
+                                        width={18}
+                                    />
+                                    <Typography
+                                        fontSize={{
+                                            xs: "0.7rem",
+                                            md: "0.9rem",
+                                        }}
+                                        fontWeight={500}
+                                        color="text.secondary"
+                                    >
+                                        @hmjti_uinam
+                                    </Typography>
+                                </a>
+                            </Stack>
+                        </>
+                    )}
                 </Stack>
                 <Box
                     loading="lazy"

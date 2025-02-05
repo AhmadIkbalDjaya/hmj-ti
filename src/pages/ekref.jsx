@@ -1,16 +1,31 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
-// import zaim from "../assets/zaim.png";
-// import rere from "../assets/rere.png";
-// import dani from "../assets/dani.png";
-// import SecondaryCard from '../components/secondaryCard';
 import Cards from "../components/card";
-import { products } from "../constants";
-
-// import { ProductCard } from '../components/card';
+import { useEffect, useState } from "react";
 
 const Ekref = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    const getProducts = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(
+                "https://amm4r.genbiuinam.org/api/products",
+            );
+            const data = await res.json();
+            setProducts(data);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, []);
+
     return (
         <>
             <Box
@@ -86,21 +101,35 @@ const Ekref = () => {
 
             <Container maxWidth="xl" sx={{ py: 9, bgcolor: "#F9FAFB" }}>
                 <Grid container spacing={3} px={{ xs: 3, sm: 0 }}>
-                    {products.map((product, i) => {
-                        return (
-                            <Grid
-                                key={i}
-                                item
-                                xs={12}
-                                sm={12}
-                                md={6}
-                                justifyContent="center"
-                                display="flex"
-                            >
-                                <Cards.ProductCard data={product} />
-                            </Grid>
-                        );
-                    })}
+                    {loading
+                        ? Array.from(new Array(2)).map((_, index) => (
+                              <Grid
+                                  key={index}
+                                  item
+                                  xs={12}
+                                  sm={12}
+                                  md={6}
+                                  justifyContent="center"
+                                  display="flex"
+                              >
+                                  <Cards.ProductCard loading={true} />
+                              </Grid>
+                          ))
+                        : products?.data?.map((product, i) => {
+                              return (
+                                  <Grid
+                                      key={i}
+                                      item
+                                      xs={12}
+                                      sm={12}
+                                      md={6}
+                                      justifyContent="center"
+                                      display="flex"
+                                  >
+                                      <Cards.ProductCard data={product} />
+                                  </Grid>
+                              );
+                          })}
                 </Grid>
             </Container>
         </>

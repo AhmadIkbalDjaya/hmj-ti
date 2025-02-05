@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Skeleton, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -6,27 +6,32 @@ import "swiper/css/navigation";
 import "./hero.css";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, Parallax } from "swiper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { articles } from "../constants";
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    // const [highlights, setHighlight] = useState([]);
+    const [highlights, setHighlight] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    // const getHighlight = async () => {
-    //     try {
-    //         const res = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=5');
-    //         const data = await res.json();
-    //         setHighlight(data);
-    //         setActiveIndex(0)
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const getHighlight = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(
+                "https://amm4r.genbiuinam.org/api/news?perpage=3",
+            );
+            const data = await res.json();
+            setHighlight(data);
+            setActiveIndex(0);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // useEffect(() => {
-    //     getHighlight();
-    // }, [])
+    useEffect(() => {
+        getHighlight();
+    }, []);
 
     return (
         <Box height="calc(100vh - 80px)" width="100%" position="relative">
@@ -68,7 +73,7 @@ const Hero = () => {
                 modules={[Parallax, Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                {articles?.map((slide, i) => (
+                {highlights?.data?.map((slide, i) => (
                     <SwiperSlide key={i}>
                         <Box component="img" src={slide.image} width="100%" />
                     </SwiperSlide>
@@ -97,7 +102,11 @@ const Hero = () => {
                                 textAlign="start"
                                 className="text"
                             >
-                                {articles[activeIndex].title}
+                                {loading ? (
+                                    <Skeleton />
+                                ) : (
+                                    highlights?.data?.[activeIndex]?.title
+                                )}
                             </Typography>
                             {/* </Slide> */}
                             <Typography
@@ -108,7 +117,17 @@ const Hero = () => {
                                 pl={{ xs: 0, md: 0.5 }}
                                 textAlign="justify"
                             >
-                                {articles[activeIndex].description}
+                                {loading ? (
+                                    <>
+                                        <Skeleton />
+                                        <Skeleton />
+                                        <Skeleton />
+                                    </>
+                                ) : (
+                                    highlights?.data?.[
+                                        activeIndex
+                                    ]?.content.split("\n")[0]
+                                )}
                             </Typography>
                         </Box>
                     </>

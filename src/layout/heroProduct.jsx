@@ -3,24 +3,29 @@ import { NavLink } from "react-router-dom";
 import "../styles/heroProduct.css";
 import arrow from "../assets/arrow.svg";
 import { products } from "../constants";
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const HeroProduct = () => {
-    // const [productHighlight, setProductHighlight] = useState([])
+    const [productHighlight, setProductHighlight] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    // const getProductHighlight = async () => {
-    //     try {
-    //         const res = await fetch('https://jsonplaceholder.typicode.com/photos?_limit=2');
-    //         const data = await res.json();
-    //         setProductHighlight(data);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
+    const getProductHighlight = async () => {
+        try {
+            setLoading(true);
+            const res = await fetch(
+                "https://amm4r.genbiuinam.org/api/products?perpage=2",
+            );
+            const data = await res.json();
+            setProductHighlight(data);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
-    // useEffect(() => {
-    //     getProductHighlight();
-    // }, [])
+    useEffect(() => {
+        getProductHighlight();
+    }, []);
 
     return (
         <Box
@@ -104,7 +109,7 @@ const HeroProduct = () => {
                             position="relative"
                             zIndex={2}
                         >
-                            {products.map((product) => (
+                            {productHighlight?.data?.map((product) => (
                                 <Grid
                                     borderRadius={1}
                                     item
