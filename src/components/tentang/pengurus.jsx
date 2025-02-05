@@ -1,6 +1,5 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import images from "../../assets/pengurus-new/index";
 
 const Pengurus = ({ style }) => {
     const [data, setData] = useState([]);
