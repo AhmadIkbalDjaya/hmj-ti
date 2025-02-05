@@ -7,23 +7,22 @@ const ArticleDetail = () => {
     const [article, setArticle] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const getArticle = async () => {
-        try {
-            setLoading(true);
-            const res = await fetch(
-                `https://amm4r.genbiuinam.org/api/news/${id}`,
-            );
-            const data = await res.json();
-            setArticle(data);
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
+        const getArticle = async () => {
+            try {
+                setLoading(true);
+                const res = await fetch(
+                    `https://amm4r.genbiuinam.org/api/news/${id}`,
+                );
+                const data = await res.json();
+                setArticle(data);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
+        };
         getArticle();
-    }, [getArticle]);
+    }, [id]);
 
     return (
         <Box

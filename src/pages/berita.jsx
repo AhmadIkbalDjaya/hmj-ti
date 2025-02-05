@@ -9,23 +9,23 @@ const Berita = () => {
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
 
-    const getArticles = async () => {
-        try {
-            setLoading(true);
-            const res = await fetch(
-                `https://amm4r.genbiuinam.org/api/news?page=${page}&perpage=8`,
-            );
-            const data = await res.json();
-            setArticles(data);
-            setLoading(false);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
+        const getArticles = async () => {
+            try {
+                setLoading(true);
+                const res = await fetch(
+                    `https://amm4r.genbiuinam.org/api/news?page=${page}&perpage=8`,
+                );
+                const data = await res.json();
+                setArticles(data);
+                setLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         getArticles();
-    }, [page, getArticles]);
+    }, [page]);
 
     const handlePagination = (_data, value) => {
         setPage(value);
