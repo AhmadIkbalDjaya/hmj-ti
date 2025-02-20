@@ -27,7 +27,12 @@ const Pengurus = ({ style }) => {
 
     return (
         <>
-            <Box py={4} display="flex" flexDirection="column">
+            <Box
+                py={4}
+                display="flex"
+                flexDirection="column"
+                id="struktur-organisasi"
+            >
                 <Typography
                     color="primary.main"
                     fontWeight={700}

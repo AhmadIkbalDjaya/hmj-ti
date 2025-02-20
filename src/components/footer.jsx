@@ -10,8 +10,10 @@ import facebookLogo from "../assets/footer/facebook.svg";
 import emailLogo from "../assets/footer/email.svg";
 import locationLogo from "../assets/footer/location.svg";
 import telephoneLogo from "../assets/footer/telephone.svg";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
-const menus = ["Beranda", "Tentang", "Kontak", "Struktur Organisasi"];
+const menus = ["Beranda", "Tentang", "Struktur Organisasi"];
 
 const Footer = () => {
     const year = new Date().getFullYear();
@@ -90,7 +92,7 @@ const Footer = () => {
                     />
                 </a>
                 <a
-                    href="https://youtube.com/@hmjtiuinam"
+                    href={`https://wa.me/68872866875`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -127,7 +129,7 @@ const Footer = () => {
                                 Telepon
                             </Typography>
                             <a
-                                href={`https://wa.me/6282197315771`}
+                                href={`https://wa.me/68872866875`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{
@@ -139,7 +141,7 @@ const Footer = () => {
                                     color="primary.main"
                                     fontSize={14}
                                 >
-                                    +62 821 9731 5771
+                                    +62 887 2866 875
                                 </Typography>
                             </a>
                         </Box>
@@ -215,31 +217,75 @@ const Footer = () => {
                 }}
             >
                 <Stack direction="row" sx={{ alignItems: "center" }}>
-                    {menus.map((menu, i) => (
-                        <Button
-                            key={i}
-                            variant="text"
-                            sx={{
-                                color: "black",
-                                fontSize: 12,
-                                fontWeight: "400",
-                                textTransform: "capitalize",
-                                ":hover": {
-                                    bgcolor: "white",
-                                    color: "#B20600",
-                                },
-                            }}
-                        >
-                            {menu}
-                        </Button>
-                    ))}
+                    {menus.map((menu, i) => {
+                        const link =
+                            menu.toLowerCase() === "beranda"
+                                ? "/"
+                                : menu.toLowerCase().replace(" ", "-") ===
+                                    "struktur-organisasi"
+                                  ? "tentang#struktur-organisasi"
+                                  : menu.toLowerCase();
+
+                        if (link === "tentang#struktur-organisasi") {
+                            return (
+                                <HashLink to={link} smooth>
+                                    <Button
+                                        key={i}
+                                        variant="text"
+                                        sx={{
+                                            color: "black",
+                                            fontSize: 12,
+                                            fontWeight: "400",
+                                            textTransform: "capitalize",
+                                            ":hover": {
+                                                bgcolor: "white",
+                                                color: "#B20600",
+                                            },
+                                        }}
+                                    >
+                                        {menu}
+                                    </Button>
+                                </HashLink>
+                            );
+                        }
+                        return (
+                            <Link to={link}>
+                                <Button
+                                    key={i}
+                                    variant="text"
+                                    sx={{
+                                        color: "black",
+                                        fontSize: 12,
+                                        fontWeight: "400",
+                                        textTransform: "capitalize",
+                                        ":hover": {
+                                            bgcolor: "white",
+                                            color: "#B20600",
+                                        },
+                                    }}
+                                >
+                                    {menu}
+                                </Button>
+                            </Link>
+                        );
+                    })}
                 </Stack>
                 <Typography sx={{ display: "flex" }} variant="caption">
                     &#169;{year}, Develop by&nbsp;
-                    <span style={{ color: "#B20600", fontWeight: 600 }}>
-                        HMJ-TI
-                    </span>{" "}
-                    🫶
+                    <Link
+                        to="https://instagram.com/inready.workgroup"
+                        style={{ textDecoration: "none" }}
+                        target="_blank"
+                    >
+                        <span
+                            style={{
+                                color: "black",
+                                fontWeight: 600,
+                            }}
+                        >
+                            Inready Workgroup
+                        </span>{" "}
+                    </Link>
                 </Typography>
             </Stack>
         </Box>
