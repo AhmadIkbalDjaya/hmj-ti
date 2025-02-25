@@ -1,6 +1,7 @@
 import { Box, Skeleton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { api } from "../lib/api";
 
 const ArticleDetail = () => {
     const { id } = useParams();
@@ -11,11 +12,8 @@ const ArticleDetail = () => {
         const getArticle = async () => {
             try {
                 setLoading(true);
-                const res = await fetch(
-                    `https://amm4r.genbiuinam.org/api/news/${id}`,
-                );
-                const data = await res.json();
-                setArticle(data);
+                const res = await api.get(`/news/${id}`);
+                setArticle(res.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);

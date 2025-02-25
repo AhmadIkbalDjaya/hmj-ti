@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/heroProduct.css";
 import arrow from "../assets/arrow.svg";
 import { useEffect, useState } from "react";
+import { api } from "../lib/api";
 
 const HeroProduct = () => {
     const [productHighlight, setProductHighlight] = useState([]);
@@ -11,11 +12,8 @@ const HeroProduct = () => {
     const getProductHighlight = async () => {
         try {
             setLoading(true);
-            const res = await fetch(
-                "https://amm4r.genbiuinam.org/api/products?perpage=2",
-            );
-            const data = await res.json();
-            setProductHighlight(data);
+            const res = await api.get("/products?perpage=2");
+            setProductHighlight(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -113,6 +111,7 @@ const HeroProduct = () => {
                                     <Grid
                                         borderRadius={1}
                                         item
+                                        key={product.id}
                                         xs={12}
                                         md={6}
                                         display="flex"

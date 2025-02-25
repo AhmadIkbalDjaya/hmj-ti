@@ -228,7 +228,7 @@ const Footer = () => {
 
                         if (link === "tentang#struktur-organisasi") {
                             return (
-                                <HashLink to={link} smooth>
+                                <HashLink to={link} smooth key={i}>
                                     <Button
                                         key={i}
                                         variant="text"
@@ -249,9 +249,8 @@ const Footer = () => {
                             );
                         }
                         return (
-                            <Link to={link}>
+                            <Link to={link} key={i}>
                                 <Button
-                                    key={i}
                                     variant="text"
                                     sx={{
                                         color: "black",

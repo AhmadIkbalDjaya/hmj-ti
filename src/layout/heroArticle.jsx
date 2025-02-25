@@ -1,6 +1,7 @@
 import { Typography, Box, Grid, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import Cards from "../components/card";
+import { api } from "../lib/api";
 
 const HeroArticle = () => {
     const [articles, setArticles] = useState([]);
@@ -9,11 +10,8 @@ const HeroArticle = () => {
     const getArticles = async () => {
         try {
             setLoading(true);
-            const res = await fetch(
-                "https://amm4r.genbiuinam.org/api/news?perpage=3",
-            );
-            const data = await res.json();
-            setArticles(data);
+            const res = await api.get("/news?perpage=3");
+            setArticles(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -48,6 +46,8 @@ const HeroArticle = () => {
                     px={{ xs: 2, sm: 10, md: 14, lg: 18 }}
                     rowSpacing={4}
                     columnSpacing={4}
+                    justifyContent="center"
+                    alignItems="center"
                 >
                     {loading
                         ? Array.from(new Array(3)).map((_, index) => (
@@ -63,7 +63,7 @@ const HeroArticle = () => {
                                   md={4}
                                   display="flex"
                                   justifyContent="center"
-                                  key={items.id}
+                                  key={items.slug}
                               >
                                   <Cards.ArticleCard data={items} />
                               </Grid>

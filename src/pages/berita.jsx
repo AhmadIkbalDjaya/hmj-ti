@@ -3,6 +3,7 @@ import { Box, Typography, Grid, Pagination } from "@mui/material";
 import Cards from "../components/card";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
+import { api } from "../lib/api";
 
 const Berita = () => {
     const [articles, setArticles] = useState([]);
@@ -13,11 +14,8 @@ const Berita = () => {
         const getArticles = async () => {
             try {
                 setLoading(true);
-                const res = await fetch(
-                    `https://amm4r.genbiuinam.org/api/news?page=${page}&perpage=8`,
-                );
-                const data = await res.json();
-                setArticles(data);
+                const res = await api.get(`/news?page=${page}&perpage=8`);
+                setArticles(res.data);
                 setLoading(false);
             } catch (error) {
                 console.log(error);

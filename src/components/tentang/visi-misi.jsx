@@ -1,5 +1,6 @@
 import { Box, Grid, Skeleton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { api } from "../../lib/api";
 
 const VisiMisi = ({ style }) => {
     const [data, setData] = useState([]);
@@ -8,9 +9,8 @@ const VisiMisi = ({ style }) => {
     const getData = async () => {
         try {
             setLoading(true);
-            const res = await fetch(`https://amm4r.genbiuinam.org/api/about`);
-            const data = await res.json();
-            setData(data);
+            const res = await api.get(`/about`);
+            setData(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);

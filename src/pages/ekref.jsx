@@ -3,6 +3,7 @@ import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
 import Cards from "../components/card";
 import { useEffect, useState } from "react";
+import { api } from "../lib/api";
 
 const Ekref = () => {
     const [products, setProducts] = useState([]);
@@ -11,11 +12,8 @@ const Ekref = () => {
     const getProducts = async () => {
         try {
             setLoading(true);
-            const res = await fetch(
-                "https://amm4r.genbiuinam.org/api/products",
-            );
-            const data = await res.json();
-            setProducts(data);
+            const res = await api.get("/products");
+            setProducts(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);

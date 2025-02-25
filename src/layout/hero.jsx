@@ -7,6 +7,7 @@ import "./hero.css";
 import "swiper/css/effect-fade";
 import { Autoplay, Pagination, Navigation, Parallax } from "swiper";
 import { useEffect, useState } from "react";
+import { api } from "../lib/api";
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -16,11 +17,8 @@ const Hero = () => {
     const getHighlight = async () => {
         try {
             setLoading(true);
-            const res = await fetch(
-                "https://amm4r.genbiuinam.org/api/news?perpage=3",
-            );
-            const data = await res.json();
-            setHighlight(data);
+            const res = await api.get("/news?perpage=3");
+            setHighlight(res.data);
             setActiveIndex(0);
             setLoading(false);
         } catch (error) {

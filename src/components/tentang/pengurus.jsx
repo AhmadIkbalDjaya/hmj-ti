@@ -1,5 +1,6 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { api } from "../../lib/api";
 
 const Pengurus = ({ style }) => {
     const [data, setData] = useState([]);
@@ -7,9 +8,8 @@ const Pengurus = ({ style }) => {
 
     const getData = async () => {
         try {
-            const res = await fetch(`https://amm4r.genbiuinam.org/api/members`);
-            const data = await res.json();
-            setData(data);
+            const res = await api.get(`/members`);
+            setData(res.data);
         } catch (error) {
             console.log(error);
         }
@@ -23,7 +23,7 @@ const Pengurus = ({ style }) => {
 
     if (loading) return <p>Loading</p>;
 
-    const { presidium, wakil_ketua_1, wakil_ketua_2 } = data?.data || {};
+    const { presidium, wakil_ketua_1, wakil_ketua_2 } = data.data || {};
 
     return (
         <>

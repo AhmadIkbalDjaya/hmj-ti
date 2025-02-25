@@ -4,20 +4,11 @@ import dot from "../assets/dot.svg";
 // import telLogo from '../assets/tel.svg';
 // import classes from '../styles/heroFeedback.module.css';
 import InputComponent from "../components/input";
-
-// const styles = {
-//     title: {
-//         fontWeight: 200,
-//         fontSize: 9,
-//     },
-//     contact: {
-//         fontWeight: 600,
-//         fontSize: 12,
-//     }
-// }
+import { api } from "../lib/api";
 
 const Feedback = () => {
     const [data, setData] = useState();
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -25,26 +16,11 @@ const Feedback = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         try {
-            const response = await fetch(
-                "https://amm4r.genbiuinam.org/api/message",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                },
-            );
-
-            if (!response.ok) {
-                throw new Error("Failed to submit form");
-            }
-
-            const res = await response.json();
-            console.log("Form submitted successfully:", res);
-            alert("Form submitted successfully!");
+            await api.post("/message", data);
+            document.getElementById("feedbackForm").reset();
+            setLoading(false);
         } catch (error) {
             console.error("Error submitting form:", error);
             alert("Error submitting form. Please try again.");
@@ -99,7 +75,7 @@ const Feedback = () => {
                             meresponsnya
                         </Typography>
                     </Stack>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} id="feedbackForm">
                         <Grid
                             container
                             columnSpacing={5}
@@ -159,10 +135,12 @@ const Feedback = () => {
                             </Grid>
                             <Grid item xs={12} md={12} mt={2}>
                                 <Button
+                                    disabled={loading}
                                     variant="contained"
                                     sx={{ textTransform: "capitalize", py: 1 }}
                                     fullWidth
                                     type="submit"
+                                    loa
                                 >
                                     Submit
                                 </Button>
