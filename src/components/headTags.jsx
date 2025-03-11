@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-import logo from "../assets/logo.svg";
 
 export const HeadTags = (props) => {
     const { title } = props;
@@ -8,7 +7,6 @@ export const HeadTags = (props) => {
     return (
         <Helmet>
             <title>{fullTitle}</title>
-            <meta property="og:image" key="og:image" content={logo} />
         </Helmet>
     );
 };
