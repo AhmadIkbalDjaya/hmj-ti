@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import logo from "../../public/logo.jpg";
+import logo from "../assets/logo.svg";
 
 export const HeadTags = (props) => {
     const { title } = props;
