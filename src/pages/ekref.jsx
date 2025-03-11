@@ -4,6 +4,7 @@ import patternBottom from "../assets/patternBottom.png";
 import Cards from "../components/card";
 import { useEffect, useState } from "react";
 import { api } from "../lib/api";
+import { HeadTags } from "../components/headTags";
 
 const Ekref = () => {
     const [products, setProducts] = useState([]);
@@ -26,6 +27,7 @@ const Ekref = () => {
 
     return (
         <>
+            <HeadTags title="Ekonomi Kreatif" />
             <Box
                 bgcolor="primary.main"
                 height={372.5}

@@ -5,6 +5,7 @@ import dot from "../assets/dot.svg";
 import "../styles/about.css";
 import VisiMisi from "../components/tentang/visi-misi";
 import Pengurus from "../components/tentang/pengurus";
+import { HeadTags } from "../components/headTags";
 
 const Tentang = () => {
     const style = {
@@ -30,6 +31,7 @@ const Tentang = () => {
 
     return (
         <>
+            <HeadTags title="Tentang" />
             <Box
                 bgcolor="primary.main"
                 height={375}

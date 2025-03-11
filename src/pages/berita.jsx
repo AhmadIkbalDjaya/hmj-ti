@@ -4,6 +4,7 @@ import Cards from "../components/card";
 import patternTop from "../assets/patternTop.png";
 import patternBottom from "../assets/patternBottom.png";
 import { api } from "../lib/api";
+import { HeadTags } from "../components/headTags";
 
 const Berita = () => {
     const [articles, setArticles] = useState([]);
@@ -31,6 +32,7 @@ const Berita = () => {
 
     return (
         <>
+            <HeadTags title="Berita & Kegiatan" />
             <Box
                 bgcolor="primary.main"
                 height={375}
