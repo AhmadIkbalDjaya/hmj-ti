@@ -1,33 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 
 * {
-	margin: 0;
-	font-family: "Plus Jakarta Sans", sans-serif;
-	-webkit-tap-highlight-color: transparent;
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {
-	background: none;
-	width: 0px;
+  background: none;
+  width: 0px;
 }
 
 .heading::after {
-	content: "";
-	display: block;
-	background-color: #b20600;
-	height: 4px;
-	margin-top: 4px;
-	border-radius: 28px;
-	width: 75px;
-	position: absolute;
-	left: 0;
-	right: 0;
-	margin-left: auto;
-	margin-right: auto;
+  content: '';
+  display: block;
+  background-color: #b20600;
+  height: 4px;
+  margin-top: 4px;
+  border-radius: 28px;
+  width: 75px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 button,
 button:active,
 button:focus {
-	outline: none;
+  outline: none;
 }

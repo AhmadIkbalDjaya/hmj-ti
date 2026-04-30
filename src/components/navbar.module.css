@@ -1,48 +1,45 @@
 a:not(:has(img))::after {
+  content: '';
+  display: block;
+  background-color: transparent;
+  height: 3.5px;
+  margin-left: 1px;
+  margin-top: 3px;
+  border-radius: 99px;
+  width: 0px;
+  transition: all 0.5s;
+}
+
+a[class='active']:not(:has(img))::after {
+  content: '';
+  display: block;
+  background-color: #b20600;
+  height: 3.5px;
+  margin-left: 1px;
+  margin-top: 3px;
+  border-radius: 99px;
+  width: 32px;
+}
+
+@media only screen and (max-width: 900px) {
+  a:not(:has(img))::after {
     content: '';
     display: block;
     background-color: transparent;
     height: 3.5px;
-    margin-left: 1px;
-    margin-top: 3px;
+    margin: 0 auto;
     border-radius: 99px;
     width: 0px;
-    transition: all .5s;
-}
+    transition: all 0.5s;
+  }
 
-a[class="active"]:not(:has(img))::after {
+  a[class='active']:not(:has(img))::after {
     content: '';
     display: block;
-    background-color: #B20600;
+    background-color: #b20600;
     height: 3.5px;
-    margin-left: 1px;
-    margin-top: 3px;
+    margin: 3px auto;
     border-radius: 99px;
     width: 32px;
-}
-
-
-@media only screen and (max-width: 900px) {
-
-    a:not(:has(img))::after {
-        content: '';
-        display: block;
-        background-color: transparent;
-        height: 3.5px;
-        margin: 0 auto;
-        border-radius: 99px;
-        width: 0px;
-        transition: all .5s;
-    }
-
-    a[class="active"]:not(:has(img))::after {
-        content: '';
-        display: block;
-        background-color: #B20600;
-        height: 3.5px;
-        margin: 3px auto;
-        border-radius: 99px;
-        width: 32px;
-    }
-
+  }
 }

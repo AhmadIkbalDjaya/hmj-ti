@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet } from 'react-helmet-async';
 
 export const HeadTags = (props) => {
-    const { title } = props;
-    const fullTitle = title ? `${title} | HMJ-TI UINAM` : "HMJ-TI UINAM";
+  const { title } = props;
+  const fullTitle = title ? `${title} | HMJ-TI UINAM` : 'HMJ-TI UINAM';
 
-    return (
-        <Helmet>
-            <title>{fullTitle}</title>
-        </Helmet>
-    );
+  return (
+    <Helmet>
+      <title>{fullTitle}</title>
+    </Helmet>
+  );
 };

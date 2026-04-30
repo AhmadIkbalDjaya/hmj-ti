@@ -1,24 +1,24 @@
 .container::after {
-    content: 'Kontak';
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    z-index: 111;
-    font-weight: 700;
-    font-size: 196px;
-    padding-left: 2px;
-    display: inline-block;
-    letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.15);
-    line-height: 60%;
+  content: 'Kontak';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 111;
+  font-weight: 700;
+  font-size: 196px;
+  padding-left: 2px;
+  display: inline-block;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.15);
+  line-height: 60%;
 }
 
 .MuiFormLabel-asterisk {
-    color: rgb(144, 8, 8) !important;
+  color: rgb(144, 8, 8) !important;
 }
 
 @media only screen and (max-width: 600px) {
-    .container::after {
-        font-size: 96px;
-    }
+  .container::after {
+    font-size: 96px;
+  }
 }

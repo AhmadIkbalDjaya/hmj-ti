@@ -1,13 +1,11 @@
-import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
 
 export default function ProtectedRoute({ children }) {
+  const isAuth = true;
 
-    const isAuth = true;
+  if (isAuth) {
+    return children;
+  }
 
-    if (isAuth) {
-        return children
-    }
-
-    return <Navigate to='/login' replace />
-
+  return <Navigate to="/login" replace />;
 }

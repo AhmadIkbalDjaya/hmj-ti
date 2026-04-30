@@ -37,7 +37,7 @@
 
 // export default images;
 
-const requireContext = require.context("./", false, /\.webp$/);
+const requireContext = require.context('./', false, /\.webp$/);
 
 const images = requireContext.keys().reduce((acc, filePath) => {
   const fileName = filePath.match(/\.\/(.*)\.webp$/)[1];
