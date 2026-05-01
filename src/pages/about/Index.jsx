@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material';
-import { HeadTags } from '../../components/headTags';
+import { HeadTags } from '../../components/HeadTags';
 import patternBottom from '../../assets/patternBottom.png';
 import patternTop from '../../assets/patternTop.png';
 import dot from '../../assets/dot.svg';

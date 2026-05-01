@@ -1,7 +1,8 @@
 import { Box, Typography, Stack, Button, Container, Grid } from '@mui/material';
 import dot from '../../../../assets/dot.svg';
-import InputComponent from '../../../../components/input';
+import InputComponent from '../../../../components/Input';
 import { useFeedbackForm } from './useFeedbackForm';
+import './FeedbackForm.css';
 
 export default function FeedbackForm() {
   const { loading, handleChange, handleSubmit } = useFeedbackForm();

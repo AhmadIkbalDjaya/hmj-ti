@@ -1,3 +1,15 @@
+.active:not(:has(img))::after {
+  content: '';
+  display: block;
+  background-color: #b20600;
+  height: 3.5px;
+  margin-left: 1px;
+  margin-top: 3px;
+  border-radius: 99px;
+  width: 32px;
+}
+
+/* Base styles for the underline effect */
 a:not(:has(img))::after {
   content: '';
   display: block;
@@ -10,18 +22,17 @@ a:not(:has(img))::after {
   transition: all 0.5s;
 }
 
-a[class='active']:not(:has(img))::after {
-  content: '';
-  display: block;
-  background-color: #b20600;
-  height: 3.5px;
-  margin-left: 1px;
-  margin-top: 3px;
-  border-radius: 99px;
-  width: 32px;
-}
-
 @media only screen and (max-width: 900px) {
+  .active:not(:has(img))::after {
+    content: '';
+    display: block;
+    background-color: #b20600;
+    height: 3.5px;
+    margin: 3px auto;
+    border-radius: 99px;
+    width: 32px;
+  }
+
   a:not(:has(img))::after {
     content: '';
     display: block;
@@ -31,15 +42,5 @@ a[class='active']:not(:has(img))::after {
     border-radius: 99px;
     width: 0px;
     transition: all 0.5s;
-  }
-
-  a[class='active']:not(:has(img))::after {
-    content: '';
-    display: block;
-    background-color: #b20600;
-    height: 3.5px;
-    margin: 3px auto;
-    border-radius: 99px;
-    width: 32px;
   }
 }

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { HeadTags } from '../../components/headTags';
+import { HeadTags } from '../../components/HeadTags';
 import patternTop from '../../assets/patternTop.png';
 import patternBottom from '../../assets/patternBottom.png';
 import { api } from '../../lib/api';
 import { Box, Grid, Pagination, Typography } from '@mui/material';
-import Cards from '../../components/card';
+import ArticleCard from '../../components/ArticleCard';
 
 export default function ArticlePage() {
   const [articles, setArticles] = useState([]);
@@ -80,22 +80,14 @@ export default function ArticlePage() {
           justifyContent="center"
         >
           {loading
-            ? Array.from(new Array(4)).map((_, index) => (
+            ? Array.from(new Array(8)).map((_, index) => (
                 <Grid item key={index}>
-                  <Cards.ArticleCard loading={true} />
+                  <ArticleCard loading={true} />
                 </Grid>
               ))
             : articles?.data?.map((items) => (
-                <Grid
-                  item
-                  // xs={16}
-                  // sm={6}
-                  // md={4}
-                  // display='flex'
-                  // justifyContent='center'
-                  key={items.title}
-                >
-                  <Cards.ArticleCard data={items} />
+                <Grid item key={items.title}>
+                  <ArticleCard article={items} />
                 </Grid>
               ))}
         </Grid>

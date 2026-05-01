@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import ProtectedRoute from '../utils/protectedRoute';
-import MainLayout from '../layout/mainLayout';
 import HomePage from '../pages/home/Index';
 import ArticlePage from '../pages/article/Index';
 import ArticleDetailPage from '../pages/article/Show';
 import BusinessPage from '../pages/business/Index';
 import AboutPage from '../pages/about/Index';
+import MainLayout from '../components/layout/MainLayout';
 
 export default function AppRoutes() {
   return (

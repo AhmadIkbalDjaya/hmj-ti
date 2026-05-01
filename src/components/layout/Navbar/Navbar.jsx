@@ -1,26 +1,15 @@
-import { AppBar, Box, Toolbar, useMediaQuery, useTheme } from '@mui/material';
-import { Stack } from '@mui/system';
+import { AppBar, Box, Toolbar, Stack } from '@mui/material';
 import { NavLink } from 'react-router-dom';
-import logo from '../assets/logo.svg';
-import './navbar.module.css';
-import { useState } from 'react';
-import HideOnScroll from '../utils/header';
+import logo from '../../../assets/logo.svg';
+import styles from './Navbar.module.css';
+import HideOnScroll from '../../../utils/header';
 import { Slant } from 'hamburger-react';
+import { useNavbar } from './useNavbar';
 
 const menus = ['Berita & Kegiatan', 'Ekonomi Kreatif', 'Tentang'];
 
 export default function Navbar(props) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [toggle, setToggle] = useState(false);
-
-  const showNav = () => {
-    if (toggle !== true) {
-      setToggle(true);
-      return;
-    }
-    setToggle(false);
-  };
+  const { isMobile, toggle, setToggle, showNav, handleLogoClick } = useNavbar();
 
   return (
     <>
@@ -36,13 +25,7 @@ export default function Navbar(props) {
             >
               <NavLink to="/">
                 <Box
-                  onClick={() => {
-                    window.scrollTo({
-                      top: 0,
-                      left: 0,
-                      behavior: 'smooth',
-                    });
-                  }}
+                  onClick={handleLogoClick}
                   component="img"
                   src={logo}
                   height={55}
@@ -57,7 +40,7 @@ export default function Navbar(props) {
                 <Slant size={24} rounded color="#B20600" toggled={toggle} toggle={setToggle} />
               </Box>
               <Stack direction="row" columnGap={3.8} display={{ xs: 'none', md: 'flex' }}>
-                <Link />
+                <Links />
               </Stack>
             </Stack>
           </Toolbar>
@@ -78,13 +61,13 @@ export default function Navbar(props) {
         position="fixed"
         sx={{ transition: 'all .5s' }}
       >
-        <Link showNav={showNav} isMobile={isMobile} />
+        <Links showNav={showNav} isMobile={isMobile} />
       </Stack>
     </>
   );
 }
 
-const Link = ({ showNav, isMobile }) => {
+const Links = ({ showNav, isMobile }) => {
   const navStyle = ({ isActive }) => {
     return {
       fontSize: '15.6px',
@@ -94,14 +77,19 @@ const Link = ({ showNav, isMobile }) => {
     };
   };
 
+  const handleClick = () => {
+    if (isMobile && showNav) {
+      showNav();
+    }
+  };
+
   return (
     <>
       <NavLink
         to="/"
         style={navStyle}
-        onClick={() => {
-          isMobile && showNav();
-        }}
+        onClick={handleClick}
+        className={({ isActive }) => isActive ? styles.active : ''}
       >
         Beranda
       </NavLink>
@@ -114,9 +102,8 @@ const Link = ({ showNav, isMobile }) => {
               : menu.replace(/\s+/g, '-').toLocaleLowerCase()
           }
           style={navStyle}
-          onClick={() => {
-            isMobile && showNav();
-          }}
+          onClick={handleClick}
+          className={({ isActive }) => isActive ? styles.active : ''}
         >
           {menu}
         </NavLink>

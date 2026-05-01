@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { api } from '../../lib/api';
-import { HeadTags } from '../../components/headTags';
+import { HeadTags } from '../../components/HeadTags';
 import { Box, Skeleton, Typography } from '@mui/material';
 
 export default function ArticleDetailPage() {
@@ -26,9 +26,20 @@ export default function ArticleDetailPage() {
   return (
     <>
       <HeadTags title={article?.data?.title} />
-      <Box py={4} display="flex" alignItems="center" flexDirection="column" bgcolor="#F9FAFB">
+      <Box
+        py={4}
+        display="flex"
+        alignItems="center"
+        flexDirection="column"
+        bgcolor="#F9FAFB"
+      >
         <Box textAlign="justify" width={{ xs: '85%', md: '69.5%' }}>
-          <Typography pb={2} fontWeight={700} fontSize={{ xs: 20, md: 28 }} textAlign="center">
+          <Typography
+            pb={2}
+            fontWeight={700}
+            fontSize={{ xs: 20, md: 28 }}
+            textAlign="center"
+          >
             {loading ? <Skeleton /> : article?.data?.title}
           </Typography>
           {loading ? (
@@ -36,8 +47,17 @@ export default function ArticleDetailPage() {
           ) : (
             <Box component="img" src={article?.data?.image} width="100%" />
           )}
-          <Typography fontWeight={300} sx={{ opacity: 0.57 }} py={2} fontStyle="italic">
-            {loading ? <Skeleton /> : `Dipublikasikan pada ${article?.data?.publication_date}`}
+          <Typography
+            fontWeight={300}
+            sx={{ opacity: 0.57 }}
+            py={2}
+            fontStyle="italic"
+          >
+            {loading ? (
+              <Skeleton />
+            ) : (
+              `Dipublikasikan pada ${article?.data?.publication_date}`
+            )}
           </Typography>
           {loading
             ? Array.from(new Array(3)).map((_, index) => <Skeleton />)

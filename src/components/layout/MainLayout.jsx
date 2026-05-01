@@ -1,11 +1,9 @@
 import { Box } from '@mui/system';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import Navbar from './Navbar/Navbar';
+import Footer from './Footer/Footer';
 
 export default function MainLayout() {
-  // const scrollDirection = useScrollDirection();
-
   return (
     <Box>
       <Box mb="80px">

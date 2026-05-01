@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import './ProductSection.css';
 import arrow from '../../../../assets/arrow.svg';
 import { useProductSection } from './useProductSection';
+import ProductCard from './ProductCard';
 
 export default function ProductSection() {
   const { productHighlight, loading } = useProductSection();
@@ -36,8 +37,8 @@ export default function ProductSection() {
             textAlign="justify"
             sx={{ textIndent: '24px' }}
           >
-            Kami menawarkan berbagai produk terbaik yang dirancang untuk memenuhi kebutuhan Anda
-            dengan kualitas yang terjamin.
+            Kami menawarkan berbagai produk terbaik yang dirancang untuk
+            memenuhi kebutuhan Anda dengan kualitas yang terjamin.
           </Typography>
           <NavLink to="/ekonomi-kreatif" className="link">
             <Stack direction="row" alignItems="center" gap={1}>
@@ -81,44 +82,15 @@ export default function ProductSection() {
               position="relative"
               zIndex={2}
             >
-              {!loading &&
-                productHighlight?.data?.map((product) => (
-                  <Grid
-                    borderRadius={1}
-                    item
-                    key={product.id}
-                    xs={12}
-                    md={6}
-                    display="flex"
-                    justifyContent={{
-                      xs: 'center',
-                      md: 'start',
-                    }}
-                    alignItems="center"
-                  >
-                    <Box
-                      className="product"
-                      borderRadius={1}
-                      mb={8}
-                      bgcolor="#fff"
-                      width="95%"
-                      height="95%"
-                      display="flex"
-                      justifyContent="center"
-                      alignItems="center"
-                      sx={{ objectFit: 'contain' }}
-                    >
-                      <Box
-                        className="product"
-                        width="85%"
-                        height="85%"
-                        component="img"
-                        sx={{ aspectRatio: 1 / 1 }}
-                        src={product.image}
-                      ></Box>
-                    </Box>
-                  </Grid>
-                ))}
+              {loading
+                ? Array.from(new Array(2)).map((_, index) => (
+                    <ProductCard key={index} loading={true} />
+                  ))
+                : productHighlight?.data?.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+              {/* {!loading &&
+                } */}
             </Grid>
           </Box>
           <NavLink to="/ekonomi-kreatif" className="link-mobile">
