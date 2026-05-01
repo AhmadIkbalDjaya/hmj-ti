@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../../lib/api';
 import { Box, Grid, Skeleton, Typography } from '@mui/material';
+import { styles } from '../styles';
+import { api } from '../../../lib/api';
 
-export default function VisionMission({ style }) {
+export default function VisionMission() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -33,14 +34,32 @@ export default function VisionMission({ style }) {
         display="flex"
       >
         <Box className="photo-container">
-          <Box loading="lazy" component="img" src={data?.data?.image1} width="75%" />
+          <Box
+            loading="lazy"
+            component="img"
+            src={data?.data?.image1}
+            width="75%"
+          />
         </Box>
       </Grid>
-      <Grid xs={12} md={6} item justifyContent="center" flexDirection="column" display="flex">
-        <Typography sx={style.title}>
-          {loading ? <Skeleton /> : 'Himpunan Mahasiswa Jurusan Teknik Informatika'}
+      <Grid
+        xs={12}
+        md={6}
+        item
+        justifyContent="center"
+        flexDirection="column"
+        display="flex"
+      >
+        <Typography sx={styles.title}>
+          {loading ? (
+            <Skeleton />
+          ) : (
+            'Himpunan Mahasiswa Jurusan Teknik Informatika'
+          )}
         </Typography>
-        <Typography sx={style.description}>{loading ? <Skeleton /> : data?.data?.goal}</Typography>
+        <Typography sx={styles.description}>
+          {loading ? <Skeleton /> : data?.data?.goal}
+        </Typography>
       </Grid>
       <Grid
         xs={12}
@@ -52,18 +71,24 @@ export default function VisionMission({ style }) {
         display="flex"
       >
         <Box>
-          <Typography sx={style.title}>{loading ? <Skeleton /> : 'Visi'}</Typography>
-          <Typography sx={style.description}>
+          <Typography sx={styles.title}>
+            {loading ? <Skeleton /> : 'Visi'}
+          </Typography>
+          <Typography sx={styles.description}>
             {loading ? <Skeleton /> : data?.data?.vision}
           </Typography>
         </Box>
         <Box>
-          <Typography sx={style.title}>{loading ? <Skeleton /> : 'Misi'}</Typography>
+          <Typography sx={styles.title}>
+            {loading ? <Skeleton /> : 'Misi'}
+          </Typography>
           <Box ml={-3}>
             <ol>
               {data?.data?.missions?.map((mission) => (
                 <li>
-                  <Typography sx={style.description}>{mission.mission}</Typography>
+                  <Typography sx={styles.description}>
+                    {mission.mission}
+                  </Typography>
                 </li>
               ))}
             </ol>
@@ -80,7 +105,12 @@ export default function VisionMission({ style }) {
         display="flex"
       >
         <Box className="photo-containerr">
-          <Box loading="lazy" component="img" src={data?.data?.image2} width="75%" />
+          <Box
+            loading="lazy"
+            component="img"
+            src={data?.data?.image2}
+            width="75%"
+          />
         </Box>
       </Grid>
     </Grid>

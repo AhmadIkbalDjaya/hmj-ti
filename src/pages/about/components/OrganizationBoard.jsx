@@ -1,8 +1,9 @@
 import { Box, Grid, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { api } from '../../../lib/api';
+import { styles } from '../styles';
 
-export default function OrganizationBoard({ style }) {
+export default function OrganizationBoard() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +39,7 @@ export default function OrganizationBoard({ style }) {
           Pengurus HMJ-TI
         </Typography>
         <Stack py={8}>
-          <Typography sx={style.title2}>Presidium</Typography>
+          <Typography sx={styles.title2}>Presidium</Typography>
           <Grid
             ml={0}
             container
@@ -72,7 +73,7 @@ export default function OrganizationBoard({ style }) {
           </Grid>
         </Stack>
       </Box>
-      <Typography sx={style.title2} pb={2}>
+      <Typography sx={styles.title2} pb={2}>
         Bidang - Bidang
       </Typography>
       <Box>
@@ -112,7 +113,7 @@ export default function OrganizationBoard({ style }) {
               <Grid container>
                 <Grid item xs={0} md={2}></Grid>
                 <Grid item xs={12} md={10} pl={{ xs: 0, md: 8 }}>
-                  <Typography sx={style.title2}>{division.department}</Typography>
+                  <Typography sx={styles.title2}>{division.department}</Typography>
                   <Grid
                     ml={0}
                     container
@@ -191,7 +192,7 @@ export default function OrganizationBoard({ style }) {
               <Grid container>
                 <Grid item xs={0} md={2}></Grid>
                 <Grid item xs={12} md={10} pl={{ xs: 0, md: 8 }}>
-                  <Typography sx={style.title2}>{division.department}</Typography>
+                  <Typography sx={styles.title2}>{division.department}</Typography>
                   <Grid
                     ml={0}
                     container
