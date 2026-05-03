@@ -1,23 +1,11 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../../../lib/api';
+import { useEffect } from 'react';
+import { useGetArticles } from '../../../../hooks/useArticle';
 
 export const useArticleSection = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getArticles = async () => {
-    try {
-      setLoading(true);
-      const res = await api.get('/news?perpage=3');
-      setArticles(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { articles, loading, fetchArticles } = useGetArticles();
 
   useEffect(() => {
-    getArticles();
+    fetchArticles({ limit: 3 });
   }, []);
 
   return {

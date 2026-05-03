@@ -12,7 +12,7 @@ export default function BusinessPage() {
       <HeadTags title="Ekonomi Kreatif" />
       <HeroSection />
       <Container maxWidth="xl" sx={{ py: 9, bgcolor: '#F9FAFB' }}>
-        <ProductList products={value.products?.data} loading={value.loading} />
+        <ProductList products={value.businesses} loading={value.loading} />
       </Container>
     </>
   );

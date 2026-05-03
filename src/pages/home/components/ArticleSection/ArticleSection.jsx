@@ -33,7 +33,7 @@ export default function ArticleSection() {
                 <ArticleCard loading={true} />
               </Grid>
             ))
-            : articles?.data?.map((article) => (
+            : articles.map((article) => (
               <Grid
                 item
                 xs={12}

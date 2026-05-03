@@ -9,7 +9,7 @@ import { Autoplay, Pagination, Navigation, Parallax } from 'swiper';
 import { useHero } from './useHero';
 
 export default function Hero() {
-  const { highlights, loading, activeIndex, handleSlideChange } = useHero();
+  const { articles, loading, activeIndex, handleSlideChange } = useHero();
 
   return (
     <Box height="calc(100vh - 80px)" width="100%" position="relative">
@@ -45,7 +45,7 @@ export default function Hero() {
         modules={[Parallax, Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {highlights?.data?.map((slide, i) => (
+        {articles?.map((slide, i) => (
           <SwiperSlide key={i}>
             <Box component="img" src={slide.image} width="100%" />
           </SwiperSlide>
@@ -72,7 +72,7 @@ export default function Hero() {
                 textAlign="start"
                 className="text"
               >
-                {loading ? <Skeleton /> : highlights?.data?.[activeIndex]?.title}
+                {loading ? <Skeleton /> : articles?.[activeIndex]?.title}
               </Typography>
               <Typography
                 pt={{ xs: 3, md: 5 }}
@@ -88,7 +88,7 @@ export default function Hero() {
                     <Skeleton />
                   </>
                 ) : (
-                  highlights?.data?.[activeIndex]?.content.split('\n')[0]
+                  articles?.[activeIndex]?.content.split('\n')[0]
                 )}
               </Typography>
             </Box>

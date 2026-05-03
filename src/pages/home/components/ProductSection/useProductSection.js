@@ -1,27 +1,15 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../../../lib/api';
+import { useEffect } from 'react';
+import { useGetBusinesses } from '../../../../hooks/useBusiness';
 
 export const useProductSection = () => {
-  const [productHighlight, setProductHighlight] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getProductHighlight = async () => {
-    try {
-      setLoading(true);
-      const res = await api.get('/products?perpage=2');
-      setProductHighlight(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { businesses, loading, fetchBusinesses } = useGetBusinesses();
 
   useEffect(() => {
-    getProductHighlight();
+    fetchBusinesses({ limit: 2 });
   }, []);
 
   return {
-    productHighlight,
+    businesses,
     loading,
   };
 };

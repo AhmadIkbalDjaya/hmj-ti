@@ -12,10 +12,10 @@ export default function ArticlePage() {
       <HeadTags title="Berita & Kegiatan" />
       <HeroSection />
       <Box bgcolor="#F9FAFB">
-        <ArticleList loading={value.loading} articles={value.articles?.data} />
+        <ArticleList loading={value.loading} articles={value.articles} />
         <Box display="flex" justifyContent="center" pb={4}>
           <Pagination
-            count={value.articles?.meta?.total_page}
+            count={value.meta?.total_page}
             color="primary"
             onChange={func.handlePagination}
           />

@@ -6,7 +6,7 @@ import { useProductSection } from './useProductSection';
 import ProductCard from './ProductCard';
 
 export default function ProductSection() {
-  const { productHighlight, loading } = useProductSection();
+  const { businesses, loading } = useProductSection();
 
   return (
     <Box
@@ -59,11 +59,9 @@ export default function ProductSection() {
           <Box
             className="container"
             marginTop={{ xs: 12, md: 4 }}
-            // marginLeft={{ xs: 0, md: 5.75 }}
             borderRadius={1}
             height={{ xs: '100%', md: '100%' }}
             zIndex={0}
-            // position='relative'
             display="flex"
             width={{
               xs: '75%',
@@ -86,11 +84,9 @@ export default function ProductSection() {
                 ? Array.from(new Array(2)).map((_, index) => (
                     <ProductCard key={index} loading={true} />
                   ))
-                : productHighlight?.data?.map((product) => (
+                : businesses?.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
-              {/* {!loading &&
-                } */}
             </Grid>
           </Box>
           <NavLink to="/ekonomi-kreatif" className="link-mobile">

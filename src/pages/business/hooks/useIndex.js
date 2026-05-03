@@ -1,28 +1,16 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../../lib/api';
+import { useEffect } from 'react';
+import { useGetBusinesses } from '../../../hooks/useBusiness';
 
 export const useIndex = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getProducts = async () => {
-    try {
-      setLoading(true);
-      const res = await api.get('/products');
-      setProducts(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { businesses, loading, fetchBusinesses } = useGetBusinesses();
 
   useEffect(() => {
-    getProducts();
+    fetchBusinesses();
   }, []);
 
   return {
     value: {
-      products,
+      businesses,
       loading,
     },
   };

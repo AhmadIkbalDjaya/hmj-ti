@@ -1,24 +1,12 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../../lib/api';
+import { useGetArticles } from '../../../hooks/useArticle';
 
 export const useIndex = () => {
-  const [articles, setArticles] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const { articles, meta, loading, fetchArticles } = useGetArticles();
 
   useEffect(() => {
-    const getArticles = async () => {
-      try {
-        setLoading(true);
-        const res = await api.get(`/news?page=${page}&perpage=8`);
-        setArticles(res.data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getArticles();
+    fetchArticles({ page, limit: 8 });
   }, [page]);
 
   const handlePagination = (_data, value) => {
@@ -28,6 +16,7 @@ export const useIndex = () => {
   return {
     value: {
       articles,
+      meta,
       loading,
     },
     func: {

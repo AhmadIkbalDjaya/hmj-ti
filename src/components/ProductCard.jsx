@@ -100,7 +100,7 @@ export default function ProductCard({ product, loading }) {
               gap={1}
             >
               <a
-                href={`https://wa.me/62${product?.no_wa.slice(1).replace(/-/g, '')}`}
+                href={`https://wa.me/62${product?.whatsapp.slice(1).replace(/-/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -123,7 +123,7 @@ export default function ProductCard({ product, loading }) {
                   fontWeight={500}
                   color="text.secondary"
                 >
-                  {product?.no_wa}
+                  {product?.whatsapp}
                 </Typography>
               </a>
             </Stack>
