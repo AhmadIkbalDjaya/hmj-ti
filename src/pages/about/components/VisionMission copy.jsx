@@ -1,10 +1,70 @@
+import { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
 import { styles } from '../styles';
+import { api } from '../../../lib/api';
 import SkeletonWrapper from '../../../components/SkeletonWrapper';
 
-export default function VisionMission({ loading, image, vision, missions }) {
+export default function VisionMission() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getData = async () => {
+    try {
+      setLoading(true);
+      const res = await api.get(`/about`);
+      setData(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
-    <>
+    <Grid container py={12} columnSpacing={2} rowSpacing={{ xs: 8, md: 18 }}>
+      <Grid
+        xs={12}
+        md={6}
+        item
+        alignItems={{ xs: 'center', md: 'start' }}
+        justifyContent="center"
+        flexDirection="column"
+        display="flex"
+      >
+        <Box className="photo-container">
+          <Box
+            loading="lazy"
+            component="img"
+            src={data?.data?.image1}
+            width="75%"
+          />
+        </Box>
+      </Grid>
+      <Grid
+        xs={12}
+        md={6}
+        item
+        justifyContent="center"
+        flexDirection="column"
+        display="flex"
+      >
+        <SkeletonWrapper loading={loading} height="48px">
+          <Typography sx={styles.title}>
+            Himpunan Mahasiswa Jurusan Teknik Informatika
+          </Typography>
+        </SkeletonWrapper>
+        <SkeletonWrapper
+          loading={loading}
+          height="18px"
+          rows={4}
+          gridSx={{ mt: 1.5 }}
+        >
+          <Typography sx={styles.description}>{data?.data?.goal}</Typography>
+        </SkeletonWrapper>
+      </Grid>
       <Grid
         xs={12}
         md={6}
@@ -24,7 +84,9 @@ export default function VisionMission({ loading, image, vision, missions }) {
             spacing={0.5}
             gridSx={{ mt: 1.5 }}
           >
-            <Typography sx={styles.description}>{vision}</Typography>
+            <Typography sx={styles.description}>
+              {data?.data?.vision}
+            </Typography>
           </SkeletonWrapper>
         </Box>
         <Box>
@@ -51,7 +113,7 @@ export default function VisionMission({ loading, image, vision, missions }) {
           >
             <Box ml={-3}>
               <ol>
-                {missions?.map((mission) => (
+                {data?.data?.missions?.map((mission) => (
                   <li>
                     <Typography sx={styles.description}>
                       {mission.mission}
@@ -73,9 +135,14 @@ export default function VisionMission({ loading, image, vision, missions }) {
         display="flex"
       >
         <Box className="photo-containerr">
-          <Box loading="lazy" component="img" src={image} width="75%" />
+          <Box
+            loading="lazy"
+            component="img"
+            src={data?.data?.image2}
+            width="75%"
+          />
         </Box>
       </Grid>
-    </>
+    </Grid>
   );
 }
