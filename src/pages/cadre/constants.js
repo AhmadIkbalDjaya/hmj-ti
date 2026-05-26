@@ -1,4 +1,4 @@
-export const PAGE_LIMIT = 10;
+export const PAGE_LIMIT = 15;
 export const START_BATCH_YEAR = 2020;
 
 export const STATUS_OPTIONS = [
