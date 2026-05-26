@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# HMJ TI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Public website for HMJ TI UINAM. This React application presents organization information, news, creative economy products, cadre data, and a public complaint form by consuming the HMJ TI backend API.
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+HMJ TI is the public-facing website for Himpunan Mahasiswa Jurusan Teknik Informatika UIN Alauddin Makassar. It provides visitors with access to organization profile content, activities and news, organization structure, creative economy products, cadre database information, and a channel for sending complaints or feedback.
 
-### `npm start`
+The application consumes data from the HMJ TI backend API, which is configured in `src/lib/api.js`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The main goal of this project is to provide an accessible, structured, and dynamic information system that helps HMJ-TI UINAM manage and publish organizational content more efficiently.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![HMJ TI thumbnail](docs/thumbnail.jpg)
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Home page with hero carousel, organization description, video section, featured articles, product highlights, and complaint form.
+- Article listing page with article search and pagination.
+- Article detail page for reading individual news or activity posts.
+- About page with organization profile, vision, missions, goals, and organization structure.
+- Creative economy page for displaying business or product data.
+- Cadre database page with search, batch filter, status filter, pagination, desktop table view, and mobile list view.
+- Complaint form for public feedback submission.
+- Reusable layout, navigation, footer, SEO title tags, service layer, and shared API client.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React 18
+- Create React App
+- React Router
+- Material UI
+- Emotion
+- Axios
+- Swiper
+- React Helmet Async
+- Prettier
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone the repository:
 
-### `npm run eject`
+```bash
+git clone https://github.com/AhmadIkbalDjaya/hmj-ti.git
+cd hmj-ti
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Install dependencies:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create the environment file:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cp .env.example .env
+```
 
-## Learn More
+For Windows PowerShell:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```powershell
+Copy-Item .env.example .env
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Environment Variables
 
-### Code Splitting
+This project uses Create React App environment variables. Frontend variables must use the `REACT_APP_` prefix.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+| Variable | Description |
+| --- | --- |
+| `REACT_APP_API_BASE_URL` | Backend API base URL used by the shared Axios client in `src/lib/api.js`. |
 
-### Analyzing the Bundle Size
+See `.env.example` for the default local value.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Running Locally
 
-### Making a Progressive Web App
+Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm start
+```
 
-### Advanced Configuration
+By default, the website will be available at:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```text
+http://localhost:3000
+```
 
-### Deployment
+Run the test suite once:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```bash
+npm test -- --watchAll=false
+```
 
-### `npm run build` fails to minify
+Build the production bundle:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run build
+```
+
+Format source files:
+
+```bash
+npm run format
+```
+
+## Project Structure
+
+```text
+.env.example          Example environment variables.
+.github/
+  workflows/          GitHub Actions deployment workflow.
+build/                Production build output.
+docs/                 Project documentation assets.
+  thumbnail.jpg       README thumbnail image.
+public/               Static public assets and HTML template.
+src/
+  assets/             Images, icons, product assets, article assets, and organization member photos.
+  components/         Shared UI components.
+    layout/           Main layout, navbar, and footer components.
+  hooks/              Shared data-fetching hooks.
+  lib/                Shared API client and environment-based base URL configuration.
+  pages/              Page-level modules for home, article, about, business, and cadre pages.
+  routes/             React Router route definitions.
+  services/           API service functions for backend resources.
+  utils/              Shared helpers and route utilities.
+  App.js              Root application component.
+  index.js            React entry point.
+```
+
+## Related Repository
+
+- Public website: [hmj-ti](https://github.com/AhmadIkbalDjaya/hmj-ti)
+- Backend API: [hmj-ti-be](https://github.com/AhmadIkbalDjaya/hmj-ti-be)
+- Admin dashboard: [hmj-ti-admin](https://github.com/AhmadIkbalDjaya/hmj-ti-admin)
