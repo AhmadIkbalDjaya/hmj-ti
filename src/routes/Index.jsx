@@ -4,6 +4,7 @@ import HomePage from '../pages/home/Index';
 import ArticlePage from '../pages/article/Index';
 import ArticleDetailPage from '../pages/article/Show';
 import BusinessPage from '../pages/business/Index';
+import CadrePage from '../pages/cadre/Index';
 import AboutPage from '../pages/about/Index';
 import MainLayout from '../components/layout/MainLayout';
 
@@ -25,6 +26,7 @@ export default function AppRoutes() {
         </Route>
         <Route path="tentang" element={<AboutPage />} />
         <Route path="ekonomi-kreatif" element={<BusinessPage />} />
+        <Route path="database-kader" element={<CadrePage />} />
       </Route>
     </Routes>
   );

@@ -6,7 +6,12 @@ import HideOnScroll from '../../../utils/header';
 import { Slant } from 'hamburger-react';
 import { useNavbar } from './useNavbar';
 
-const menus = ['Berita & Kegiatan', 'Ekonomi Kreatif', 'Tentang'];
+const menus = [
+  'Berita & Kegiatan',
+  'Ekonomi Kreatif',
+  'Database Kader',
+  'Tentang',
+];
 
 export default function Navbar(props) {
   const { isMobile, toggle, setToggle, showNav, handleLogoClick } = useNavbar();
@@ -14,7 +19,10 @@ export default function Navbar(props) {
   return (
     <>
       <HideOnScroll setToggle={setToggle} threshold={80} {...props}>
-        <AppBar sx={{ boxShadow: '0px 4px 22px -6px rgba(0, 0, 0, 0.12)' }} position="fixed">
+        <AppBar
+          sx={{ boxShadow: '0px 4px 22px -6px rgba(0, 0, 0, 0.12)' }}
+          position="fixed"
+        >
           <Toolbar sx={{ height: 80, bgcolor: '#fff' }}>
             <Stack
               direction="row"
@@ -37,9 +45,19 @@ export default function Navbar(props) {
                 zIndex={100}
                 right={16}
               >
-                <Slant size={24} rounded color="#B20600" toggled={toggle} toggle={setToggle} />
+                <Slant
+                  size={24}
+                  rounded
+                  color="#B20600"
+                  toggled={toggle}
+                  toggle={setToggle}
+                />
               </Box>
-              <Stack direction="row" columnGap={3.8} display={{ xs: 'none', md: 'flex' }}>
+              <Stack
+                direction="row"
+                columnGap={3.8}
+                display={{ xs: 'none', md: 'flex' }}
+              >
                 <Links />
               </Stack>
             </Stack>
@@ -89,7 +107,7 @@ const Links = ({ showNav, isMobile }) => {
         to="/"
         style={navStyle}
         onClick={handleClick}
-        className={({ isActive }) => isActive ? styles.active : ''}
+        className={({ isActive }) => (isActive ? styles.active : '')}
       >
         Beranda
       </NavLink>
@@ -103,7 +121,7 @@ const Links = ({ showNav, isMobile }) => {
           }
           style={navStyle}
           onClick={handleClick}
-          className={({ isActive }) => isActive ? styles.active : ''}
+          className={({ isActive }) => (isActive ? styles.active : '')}
         >
           {menu}
         </NavLink>
