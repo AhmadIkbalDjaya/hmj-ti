@@ -27,14 +27,14 @@ export default function AboutPage() {
             >
               <GoalSection
                 loading={value.loading}
-                image={value.data?.data?.image1}
-                goal={value.data?.data?.goal}
+                image={value.data.main_image}
+                goal={value.data.goal}
               />
               <VisionMission
                 loading={value.loading}
-                vision={value.data?.data?.vision}
-                missions={value.data?.data?.missions}
-                image={value.data?.data?.image1}
+                vision={value.data.vision}
+                missions={value.data.missions}
+                image={value.data.secondary_image}
               />
             </Grid>
             <OrganizationBoard />

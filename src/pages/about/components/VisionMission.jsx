@@ -3,11 +3,14 @@ import { styles } from '../styles';
 import SkeletonWrapper from '../../../components/SkeletonWrapper';
 
 export default function VisionMission({ loading, image, vision, missions }) {
+  const showImage = loading || image;
+  const missionItems = missions ?? [];
+
   return (
     <>
       <Grid
         xs={12}
-        md={6}
+        md={showImage ? 6 : 12}
         item
         gap={2}
         justifyContent="center"
@@ -51,11 +54,9 @@ export default function VisionMission({ loading, image, vision, missions }) {
           >
             <Box ml={-3}>
               <ol>
-                {missions?.map((mission) => (
-                  <li>
-                    <Typography sx={styles.description}>
-                      {mission.mission}
-                    </Typography>
+                {missionItems.map((mission, index) => (
+                  <li key={`${mission}-${index}`}>
+                    <Typography sx={styles.description}>{mission}</Typography>
                   </li>
                 ))}
               </ol>
@@ -63,19 +64,29 @@ export default function VisionMission({ loading, image, vision, missions }) {
           </SkeletonWrapper>
         </Box>
       </Grid>
-      <Grid
-        xs={12}
-        md={6}
-        item
-        justifyContent="center"
-        alignItems={{ xs: 'center', md: 'end' }}
-        flexDirection="column"
-        display="flex"
-      >
-        <Box className="photo-containerr">
-          <Box loading="lazy" component="img" src={image} width="75%" />
-        </Box>
-      </Grid>
+      {showImage && (
+        <Grid
+          xs={12}
+          md={6}
+          item
+          justifyContent="center"
+          alignItems={{ xs: 'center', md: 'end' }}
+          flexDirection="column"
+          display="flex"
+        >
+          <SkeletonWrapper
+            loading={loading}
+            variant="rectangular"
+            width={300}
+            height={300}
+            sx={{ borderRadius: '4px' }}
+          >
+            <Box className="photo-containerr">
+              <Box loading="lazy" component="img" src={image} width="75%" />
+            </Box>
+          </SkeletonWrapper>
+        </Grid>
+      )}
     </>
   );
 }

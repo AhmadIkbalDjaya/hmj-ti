@@ -1,26 +1,14 @@
-import { useEffect, useState } from 'react';
-import { api } from '../../../lib/api';
+import { useEffect } from 'react';
+import { useGetAbout } from '../../../hooks/useAbout';
 
 export const useIndex = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getData = async () => {
-    try {
-      setLoading(true);
-      const res = await api.get(`/about`);
-      setData(res.data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { about, loading, fetchAbout } = useGetAbout();
 
   useEffect(() => {
-    getData();
+    fetchAbout();
   }, []);
 
   return {
-    value: { data, loading },
+    value: { data: about, loading },
   };
 };
