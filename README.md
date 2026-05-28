@@ -26,7 +26,7 @@ The main goal of this project is to provide an accessible, structured, and dynam
 ## Tech Stack
 
 - React 18
-- Create React App
+- Vite
 - React Router
 - Material UI
 - Emotion
@@ -64,11 +64,11 @@ Copy-Item .env.example .env
 
 ## Environment Variables
 
-This project uses Create React App environment variables. Frontend variables must use the `REACT_APP_` prefix.
+This project uses Vite environment variables. Frontend variables must use the `VITE_` prefix.
 
 | Variable | Description |
 | --- | --- |
-| `REACT_APP_API_BASE_URL` | Backend API base URL used by the shared Axios client in `src/lib/api.js`. |
+| `VITE_API_BASE_URL` | Backend API base URL used by the shared Axios client in `src/lib/api.js`. |
 
 See `.env.example` for the default local value.
 
@@ -77,19 +77,13 @@ See `.env.example` for the default local value.
 Start the development server:
 
 ```bash
-npm start
+npm run dev
 ```
 
 By default, the website will be available at:
 
 ```text
-http://localhost:3000
-```
-
-Run the test suite once:
-
-```bash
-npm test -- --watchAll=false
+http://localhost:5173
 ```
 
 Build the production bundle:
@@ -108,12 +102,13 @@ npm run format
 
 ```text
 .env.example          Example environment variables.
+index.html            Vite HTML entry point.
 .github/
   workflows/          GitHub Actions deployment workflow.
-build/                Production build output.
+dist/                 Production build output.
 docs/                 Project documentation assets.
   thumbnail.jpg       README thumbnail image.
-public/               Static public assets and HTML template.
+public/               Static public assets copied by Vite.
 src/
   assets/             Images, icons, product assets, article assets, and organization member photos.
   components/         Shared UI components.
@@ -124,8 +119,8 @@ src/
   routes/             React Router route definitions.
   services/           API service functions for backend resources.
   utils/              Shared helpers and route utilities.
-  App.js              Root application component.
-  index.js            React entry point.
+  App.jsx             Root application component.
+  main.jsx            React entry point.
 ```
 
 ## Related Repository
