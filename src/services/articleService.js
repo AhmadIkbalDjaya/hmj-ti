@@ -1,4 +1,5 @@
 import { api, filterNullParams } from '../lib/api';
+import handleApiError from '../helpers/handleApiError';
 
 export const getArticles = async ({
   page,
@@ -17,7 +18,7 @@ export const getArticles = async ({
 
     return response.data;
   } catch (error) {
-    // handle error
+    return handleApiError(error, 'Gagal mengambil data artikel');
   }
 };
 
@@ -27,6 +28,6 @@ export const getArticle = async (slug) => {
 
     return response.data;
   } catch (error) {
-    // handle error
+    return handleApiError(error, 'Gagal mengambil detail artikel');
   }
 };

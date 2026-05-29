@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Box, Grid, Typography } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import { styles } from '../styles';
 import { api } from '../../../lib/api';
 import SkeletonWrapper from '../../../components/SkeletonWrapper';
 
 export default function VisionMission() {
+  const { enqueueSnackbar } = useSnackbar();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -13,9 +15,14 @@ export default function VisionMission() {
       setLoading(true);
       const res = await api.get(`/about`);
       setData(res.data);
-      setLoading(false);
     } catch (error) {
-      console.log(error);
+      const message =
+        error?.response?.data?.message ??
+        error?.message ??
+        'Gagal mengambil data';
+      enqueueSnackbar(message, { variant: 'error' });
+    } finally {
+      setLoading(false);
     }
   };
 

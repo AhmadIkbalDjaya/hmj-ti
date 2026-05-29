@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { createComplaint as createComplaintService } from '../services/complaintService';
 
 export const useCreateComplaint = ({ onSuccess = () => {} } = {}) => {
+  const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -18,12 +20,17 @@ export const useCreateComplaint = ({ onSuccess = () => {} } = {}) => {
       });
 
       onSuccess?.(result);
-      // enqueueSnackbar(message, { variant: 'success' });
+      const message = result.message ?? 'Pesan berhasil dikirim';
+      enqueueSnackbar(message, { variant: 'success' });
 
       return result;
     } catch (error) {
-      setErrors(error?.response?.data?.errors ?? {});
-      throw error;
+      setErrors(error?.errors ?? {});
+
+      if (error?.status !== 422) {
+        const message = error?.message ?? 'Gagal mengirim pesan';
+        enqueueSnackbar(message, { variant: 'error' });
+      }
     } finally {
       setLoading(false);
     }

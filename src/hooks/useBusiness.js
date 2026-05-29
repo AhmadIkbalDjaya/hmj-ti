@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { getBusinesses } from '../services/businessService';
 
 export const useGetBusinesses = () => {
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [businesses, setBusinesses] = useState([]);
   const [meta, setMeta] = useState();
   const [loading, setLoading] = useState(true);
@@ -20,8 +21,7 @@ export const useGetBusinesses = () => {
       setLoading(false);
     } catch (error) {
       const message = error?.message ?? 'Gagal mengambil data';
-      // enqueueSnackbar(message, { variant: 'error' });
-      setLoading(false);
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 

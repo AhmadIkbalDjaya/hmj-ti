@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { getOrganizationStructure } from '../services/organizationStructureService';
 
 export const useGetOrganizationStructure = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [structure, setStructure] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +14,8 @@ export const useGetOrganizationStructure = () => {
       setStructure(response.data);
       setLoading(false);
     } catch (error) {
-      // handle error
+      const message = error?.message ?? 'Gagal mengambil data';
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 

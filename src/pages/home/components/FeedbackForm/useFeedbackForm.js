@@ -7,7 +7,6 @@ export const useFeedbackForm = () => {
     onSuccess: () => {
       document.getElementById('feedbackForm')?.reset();
       setData({});
-      alert('Pesan berhasil dikirim!');
     },
   });
 
@@ -17,16 +16,7 @@ export const useFeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      await createComplaint(data);
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      const validationErrors = error?.response?.data?.errors ?? {};
-      if (Object.keys(validationErrors).length === 0) {
-        alert('Error submitting form. Please try again.');
-      }
-    }
+    await createComplaint(data);
   };
 
   return {

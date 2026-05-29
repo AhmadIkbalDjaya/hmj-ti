@@ -1,4 +1,5 @@
 import { api, filterNullParams } from '../lib/api';
+import handleApiError from '../helpers/handleApiError';
 
 export const getBusinesses = async ({ page, limit, search } = {}) => {
   try {
@@ -11,6 +12,6 @@ export const getBusinesses = async ({ page, limit, search } = {}) => {
 
     return response.data;
   } catch (error) {
-    // handle error
+    return handleApiError(error, 'Gagal mengambil data bisnis');
   }
 };

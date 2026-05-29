@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { HelmetProvider } from 'react-helmet-async';
+import AppSnackbarProvider from './components/AppSnackbarProvider';
 
 const theme = createTheme({
   typography: {
@@ -38,7 +39,9 @@ root.render(
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <HelmetProvider>
-          <App />
+          <AppSnackbarProvider>
+            <App />
+          </AppSnackbarProvider>
         </HelmetProvider>
       </BrowserRouter>
     </ThemeProvider>

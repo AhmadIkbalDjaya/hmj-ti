@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { getAbout } from '../services/aboutService';
 
 const defaultAbout = {
@@ -18,6 +19,7 @@ const normalizeAbout = (data) => ({
 });
 
 export const useGetAbout = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [about, setAbout] = useState(defaultAbout);
   const [loading, setLoading] = useState(true);
 
@@ -26,10 +28,10 @@ export const useGetAbout = () => {
       setLoading(true);
       const response = await getAbout();
       setAbout(normalizeAbout(response?.data));
-    } catch (error) {
-      console.log(error);
-    } finally {
       setLoading(false);
+    } catch (error) {
+      const message = error?.message ?? 'Gagal mengambil data';
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 

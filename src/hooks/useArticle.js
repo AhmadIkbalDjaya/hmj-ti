@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { getArticles, getArticle } from '../services/articleService';
 
 export const useGetArticles = () => {
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [articles, setArticles] = useState([]);
   const [meta, setMeta] = useState();
   const [loading, setLoading] = useState(true);
@@ -21,8 +22,7 @@ export const useGetArticles = () => {
       setLoading(false);
     } catch (error) {
       const message = error?.message ?? 'Gagal mengambil data';
-      // enqueueSnackbar(message, { variant: 'error' });
-      setLoading(false);
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 
@@ -35,7 +35,7 @@ export const useGetArticles = () => {
 };
 
 export const useGetArticle = () => {
-  // const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(true);
   const [article, setArticle] = useState();
 
@@ -49,8 +49,7 @@ export const useGetArticle = () => {
       return result.data;
     } catch (error) {
       const message = error?.message ?? 'Gagal mengambil data';
-      // enqueueSnackbar(message, { variant: 'error' });
-      setLoading(false);
+      enqueueSnackbar(message, { variant: 'error' });
     }
   };
 

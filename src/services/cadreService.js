@@ -1,4 +1,5 @@
 import { api, filterNullParams } from '../lib/api';
+import handleApiError from '../helpers/handleApiError';
 
 export const getCadres = async ({
   page = 1,
@@ -18,15 +19,7 @@ export const getCadres = async ({
     const response = await api.get('/cadres', { params });
 
     return response.data;
-  } catch {
-    return {
-      data: [],
-      meta: {
-        page,
-        limit,
-        total: 0,
-        total_page: 0,
-      },
-    };
+  } catch (error) {
+    return handleApiError(error, 'Gagal mengambil data kader');
   }
 };
