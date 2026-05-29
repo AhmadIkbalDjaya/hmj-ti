@@ -2,13 +2,14 @@ import { HeadTags } from '../../components/HeadTags';
 import { Box, Skeleton, Typography } from '@mui/material';
 import { useShow } from './hooks/useShow';
 import SkeletonWrapper from '../../components/SkeletonWrapper';
+import { formatDate } from '../../utils/formatDate';
 
 export default function ArticleDetailPage() {
   const { value } = useShow();
 
   return (
     <>
-      <HeadTags title={value.article?.data?.title} />
+      <HeadTags title={value.article?.title} />
       <Box
         py={4}
         display="flex"
@@ -29,7 +30,7 @@ export default function ArticleDetailPage() {
               fontSize={{ xs: 20, md: 28 }}
               textAlign="center"
             >
-              {value.article?.data?.title}
+              {value.article?.title}
             </Typography>
           </SkeletonWrapper>
           <SkeletonWrapper
@@ -37,11 +38,7 @@ export default function ArticleDetailPage() {
             variant="rectangular"
             height="350px"
           >
-            <Box
-              component="img"
-              src={value.article?.data?.image}
-              width="100%"
-            />
+            <Box component="img" src={value.article?.image} width="100%" />
           </SkeletonWrapper>
           <SkeletonWrapper
             loading={value.loading}
@@ -55,17 +52,15 @@ export default function ArticleDetailPage() {
               py={2}
               fontStyle="italic"
             >
-              {`Dipublikasikan pada ${value.article?.data?.publication_date}`}
+              {`Dipublikasikan pada ${formatDate(value.article?.publish_at)}`}
             </Typography>
           </SkeletonWrapper>
           <SkeletonWrapper loading={value.loading} rows={12}>
-            {value.article?.data?.content
-              ?.split('\n')
-              .map((paragraph, index) => (
-                <Typography key={index} mt={index > 0 ? 1 : 0}>
-                  {paragraph}
-                </Typography>
-              ))}
+            {value.article?.content?.split('\n').map((paragraph, index) => (
+              <Typography key={index} mt={index > 0 ? 1 : 0}>
+                {paragraph}
+              </Typography>
+            ))}
           </SkeletonWrapper>
         </Box>
       </Box>
