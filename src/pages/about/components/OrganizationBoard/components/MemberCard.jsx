@@ -1,7 +1,16 @@
 import { Box, Typography } from '@mui/material';
 import SkeletonWrapper from '../../../../../components/SkeletonWrapper';
+import memberMaleImg from '../../../../../assets/member-male.webp';
+import memberFemaleImg from '../../../../../assets/member-female.webp';
 
 export default function MemberCard({ member, loading }) {
+  const genderDefaultImages = {
+    male: memberMaleImg,
+    female: memberFemaleImg,
+  };
+  const image =
+    member?.photo ?? genderDefaultImages[member?.gender] ?? memberMaleImg;
+
   return (
     <Box
       display="flex"
@@ -19,7 +28,7 @@ export default function MemberCard({ member, loading }) {
           height="150px"
           sx={{ borderRadius: 1 }}
         >
-          <Box loading="lazy" component="img" src={member?.image} />
+          <Box loading="lazy" component="img" src={image} />
         </SkeletonWrapper>
       </Box>
       <Box width="200px">
