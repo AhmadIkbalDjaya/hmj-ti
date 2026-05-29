@@ -7,17 +7,13 @@ export const createComplaint = async ({
   institute,
   description,
 } = {}) => {
-  try {
-    const response = await api.post('/complaints', {
-      name,
-      email,
-      phone,
-      institute,
-      description,
-    });
+  const response = await api.post('/complaints', {
+    name,
+    email,
+    phone,
+    institute,
+    description,
+  });
 
-    return response.data;
-  } catch (error) {
-    // handle error
-  }
+  return response.data;
 };

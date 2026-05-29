@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { createComplaint as createComplaintService } from '../services/complaintService';
 
 export const useCreateComplaint = ({ onSuccess = () => {} } = {}) => {
-  const [loading, setloading] = useState();
-  const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const createComplaint = async (form) => {
     try {
-      setloading(true);
+      setLoading(true);
+      setErrors({});
       const result = await createComplaintService({
         name: form.name,
         email: form.email,
@@ -15,13 +16,16 @@ export const useCreateComplaint = ({ onSuccess = () => {} } = {}) => {
         institute: form.institute,
         description: form.description,
       });
-      onSuccess?.call();
 
-      const message = result.message ?? 'Pesan berhasil dikirim';
+      onSuccess?.(result);
       // enqueueSnackbar(message, { variant: 'success' });
+
+      return result;
     } catch (error) {
+      setErrors(error?.response?.data?.errors ?? {});
+      throw error;
     } finally {
-      setloading(false);
+      setLoading(false);
     }
   };
 

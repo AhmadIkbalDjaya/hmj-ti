@@ -5,7 +5,7 @@ import { useFeedbackForm } from './useFeedbackForm';
 import './FeedbackForm.css';
 
 export default function FeedbackForm() {
-  const { loading, handleChange, handleSubmit } = useFeedbackForm();
+  const { loading, errors, handleChange, handleSubmit } = useFeedbackForm();
 
   return (
     <Box position="relative" bgcolor={'#F9FAFB'}>
@@ -58,7 +58,7 @@ export default function FeedbackForm() {
               container
               columnSpacing={5}
               rowSpacing={2}
-              alignItems="center"
+              alignItems="start"
               justifyContent="center"
             >
               <Grid item xs={12} md={6}>
@@ -68,32 +68,39 @@ export default function FeedbackForm() {
                   label="Nama Lengkap"
                   required={true}
                   handleChange={handleChange}
+                  error={Boolean(errors.name)}
+                  helperText={errors.name?.[0]}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <InputComponent
                   id="email"
                   name="email"
-                  type="email"
                   label="Email"
                   handleChange={handleChange}
+                  error={Boolean(errors.email)}
+                  helperText={errors.email?.[0]}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <InputComponent
                   id="tel"
                   type="tel"
-                  name="contact"
+                  name="phone"
                   label="Telepon/Whatsapp"
                   handleChange={handleChange}
+                  error={Boolean(errors.phone)}
+                  helperText={errors.phone?.[0]}
                 />
               </Grid>
               <Grid item xs={12} md={6}>
                 <InputComponent
                   id="instansi"
                   label="Instansi"
-                  name="agency"
+                  name="institute"
                   handleChange={handleChange}
+                  error={Boolean(errors.institute)}
+                  helperText={errors.institute?.[0]}
                 />
               </Grid>
               <Grid item xs={12} md={12}>
@@ -104,6 +111,8 @@ export default function FeedbackForm() {
                   required={true}
                   multiline={true}
                   handleChange={handleChange}
+                  error={Boolean(errors.description)}
+                  helperText={errors.description?.[0]}
                   sx={{
                     '.MuiFormLabel-asterisk': {
                       color: 'primary.main',

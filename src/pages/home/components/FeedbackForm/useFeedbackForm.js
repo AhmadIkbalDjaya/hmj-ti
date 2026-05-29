@@ -1,9 +1,15 @@
 import { useState } from 'react';
-import { api } from '../../../../lib/api';
+import { useCreateComplaint } from '../../../../hooks/useComplaint';
 
 export const useFeedbackForm = () => {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(false);
+  const { loading, errors, createComplaint } = useCreateComplaint({
+    onSuccess: () => {
+      document.getElementById('feedbackForm')?.reset();
+      setData({});
+      alert('Pesan berhasil dikirim!');
+    },
+  });
 
   const handleChange = (e) => {
     setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -11,23 +17,22 @@ export const useFeedbackForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
     try {
-      await api.post('/message', data);
-      document.getElementById('feedbackForm').reset();
-      setData({});
-      setLoading(false);
-      alert('Pesan berhasil dikirim!');
+      await createComplaint(data);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Error submitting form. Please try again.');
-      setLoading(false);
+      const validationErrors = error?.response?.data?.errors ?? {};
+      if (Object.keys(validationErrors).length === 0) {
+        alert('Error submitting form. Please try again.');
+      }
     }
   };
 
   return {
     data,
     loading,
+    errors,
     handleChange,
     handleSubmit,
   };
