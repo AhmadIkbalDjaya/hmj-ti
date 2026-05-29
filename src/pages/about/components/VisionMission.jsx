@@ -81,7 +81,7 @@ export default function VisionMission({ loading, image, vision, missions }) {
             height={300}
             sx={{ borderRadius: '4px' }}
           >
-            <Box className="photo-containerr">
+            <Box className="vision-mission-image-frame">
               <Box loading="lazy" component="img" src={image} width="75%" />
             </Box>
           </SkeletonWrapper>

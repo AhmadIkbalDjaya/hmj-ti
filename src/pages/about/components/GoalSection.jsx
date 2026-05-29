@@ -24,7 +24,7 @@ export default function GoalSection({ loading, image, goal }) {
             height={300}
             sx={{ borderRadius: '4px' }}
           >
-            <Box className="photo-container">
+            <Box className="goal-image-frame">
               <Box loading="lazy" component="img" src={image} width="75%" />
             </Box>
           </SkeletonWrapper>

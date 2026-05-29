@@ -34,7 +34,7 @@ export default function VisionMission() {
         flexDirection="column"
         display="flex"
       >
-        <Box className="photo-container">
+        <Box className="goal-image-frame">
           <Box
             loading="lazy"
             component="img"
@@ -134,7 +134,7 @@ export default function VisionMission() {
         flexDirection="column"
         display="flex"
       >
-        <Box className="photo-containerr">
+        <Box className="vision-mission-image-frame">
           <Box
             loading="lazy"
             component="img"

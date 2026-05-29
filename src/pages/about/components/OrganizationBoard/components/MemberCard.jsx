@@ -9,7 +9,7 @@ export default function MemberCard({ member, loading }) {
       alignItems="center"
       textAlign="center"
     >
-      <Box className="photo-containers">
+      <Box className="member-photo-frame">
         <SkeletonWrapper
           loading={loading}
           variant="rectangle"

@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 const Profile = ({ foto }) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" textAlign="center">
-      <Box className="photo-containers">
+      <Box className="member-photo-frame">
         <Box component="img" src={foto} width="175px" />
       </Box>
       <Box width="200px">
