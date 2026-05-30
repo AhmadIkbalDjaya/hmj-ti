@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import MemberCard from './MemberCard';
 
-export const MemberListGrid = ({ members }) => {
+export const MemberListGrid = ({ members = [], loading = false }) => {
   return (
     <Grid
       ml={0}
@@ -18,7 +18,7 @@ export const MemberListGrid = ({ members }) => {
     >
       {members.map((member, index) => (
         <Grid key={member?.id || index} item md={3} xs={12} ml={3}>
-          <MemberCard member={member} />
+          <MemberCard member={member} loading={loading} />
         </Grid>
       ))}
     </Grid>

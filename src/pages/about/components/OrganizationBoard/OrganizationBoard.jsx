@@ -4,16 +4,46 @@ import { useOrganizationBoard } from './useOrganizationBoard';
 import { MemberListGrid } from './components/MemberListGrid';
 import { DeputySection } from './components/DeputySection';
 
+const createSkeletonMembers = (count, prefix = 'skeleton-member') =>
+  Array.from({ length: count }, (_, index) => ({
+    id: `${prefix}-${index}`,
+  }));
+
+const skeletonDeputies = Array.from({ length: 2 }, (_, deputyIndex) => ({
+  id: `skeleton-deputy-${deputyIndex}`,
+  assigned_members: createSkeletonMembers(
+    1,
+    `skeleton-deputy-member-${deputyIndex}`,
+  ),
+  children: Array.from({ length: 2 }, (_, departmentIndex) => ({
+    id: `skeleton-department-${deputyIndex}-${departmentIndex}`,
+    children: [
+      {
+        id: `skeleton-leader-${deputyIndex}-${departmentIndex}`,
+        level: 3,
+        assigned_members: createSkeletonMembers(
+          1,
+          `skeleton-leader-member-${deputyIndex}-${departmentIndex}`,
+        ),
+      },
+      {
+        id: `skeleton-staff-${deputyIndex}-${departmentIndex}`,
+        level: 4,
+        assigned_members: createSkeletonMembers(
+          3,
+          `skeleton-staff-member-${deputyIndex}-${departmentIndex}`,
+        ),
+      },
+    ],
+  })),
+}));
+
 export default function OrganizationBoard() {
   const { executive_board, deputies, loading } = useOrganizationBoard();
-
-  if (loading) {
-    return (
-      <Typography textAlign="center" py={10}>
-        Loading...
-      </Typography>
-    );
-  }
+  const displayedExecutiveBoard = loading
+    ? createSkeletonMembers(4)
+    : executive_board;
+  const displayedDeputies = loading ? skeletonDeputies : deputies;
 
   return (
     <>
@@ -36,7 +66,7 @@ export default function OrganizationBoard() {
         {/* Executive Board Section */}
         <Stack py={8}>
           <Typography sx={styles.title2}>Presidium</Typography>
-          <MemberListGrid members={executive_board} />
+          <MemberListGrid members={displayedExecutiveBoard} loading={loading} />
         </Stack>
       </Box>
 
@@ -45,8 +75,8 @@ export default function OrganizationBoard() {
         Bidang - Bidang
       </Typography>
 
-      {deputies.map((deputy) => (
-        <DeputySection key={deputy.id} deputy={deputy} />
+      {displayedDeputies.map((deputy) => (
+        <DeputySection key={deputy.id} deputy={deputy} loading={loading} />
       ))}
     </>
   );
